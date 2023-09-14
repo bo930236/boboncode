@@ -84,7 +84,7 @@ export default function IndexPage({
   //#endregion  //*======== Search ===========
 
   //#region  //*=========== Post Language Splitter ===========
-  const englishPosts = filteredPosts.filter((p) => !p.slug.startsWith('id-'));
+  const englishPosts = filteredPosts.filter((p) => !p.slug.startsWith('ch-'));
   const traditionalChinesePosts = filteredPosts.filter((p) =>
     p.slug.startsWith('ch-')
   );

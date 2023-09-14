@@ -306,12 +306,12 @@ export async function getStaticProps() {
   const projects = await getAllFilesFrontmatter('projects');
 
   const featuredPosts = getFeatured(blogs, [
-    'nextjs-boilerplate-2023',
-    'nextjs-auth-hoc',
+    'ch-Next.js-Rendering-Pattern',
+    'nextjs-storybook-tailwind',
   ]);
   const featuredProjects = getFeatured(projects, ['side-projects']);
 
-  const introPosts = getFeatured(blogs, ['nextjs-fetch-method']);
+  const introPosts = getFeatured(blogs, ['nextjs-storybook-tailwind']);
 
   return {
     props: {

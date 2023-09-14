@@ -1,0 +1,62 @@
+---
+title: 'Next.js Rendering Pattern'
+publishedAt: '2023-07-10'
+description: '了解 Next.js 頁面渲染模式 '
+banner: '6c02ad769cb0ee4508be15f512daf5cc'
+tags: 'nextjs,render'
+---
+
+## CSR（Client-Side Rendering）客戶端渲染
+
+- 最常見的網頁渲染模式之一。
+- 這種渲染方式由單頁應用程序 (SPA) 使用，ex: React 和 Vue。
+
+  <CloudinaryImg
+    mdx
+    publicId='bobotsai/blogs/Next.js-Rendering-Pattern/3bc77dee2b8dd3dfb3a1bc5ca9e76702'
+    alt='client-side-rendering'
+    width={752}
+    height={552}
+  />
+  [Image copid from this !](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+
+- **step 1 :** 瀏覽器向 server 請求數據，server 回傳 response 給瀏覽器。此時回傳的 HTML 文件幾乎空白，僅包含基本結構和 React 的 JavaScript 程式碼引用。
+- **step 2 :** 瀏覽器開始下載 JavaScript bundle，這是整個應用程序的主要程式碼。對於大型應用程序，可能需要花一些時間，除非手動將代碼拆分（ex:React.lazy()）。
+- **step 3 :** 一旦 JavaScript 程式碼被完全下載，瀏覽器開始執行這些程式碼。當 React 被啟動時，它會使用 createRoot(rootEl)方法來建立應用程序的根節點，其中 rootEl 是 HTML 文件中的某個元素。
+- **step 4 :** 接下來，React 使用 .render() 方法，將應用程序的 UI 內容生成並插入到 root 中。這就是 React 將應用程序的 UI 轉化為實際的 DOM 元素的過程。
+- **step 5 :** 最後，瀏覽器將這些 DOM 元素渲染到螢幕上，讓 user 可以看見網頁內容。此時網頁完全具有互動性，user 可以進行互動，例如點擊按鈕、填寫表單等。
+
+## SSR（Server-Side Rendering）伺服器端渲染
+
+{' '}
+
+<CloudinaryImg
+  mdx
+  publicId='bobotsai/blogs/Next.js-Rendering-Pattern/2089d151056f3030d102b2d1744c6bfe'
+  alt='server-side-rendering'
+  width={752}
+  height={552}
+/>
+[Image copid from this !](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+
+- **step 1 :** 首先，在 client 端向 server 發送請求後，server 開始為我們建立 HTML 文件。這些功能強大的 server ，搭配 Vercel，可以在幾毫秒內完成此任務。
+- **step 2 :** 新生成的 HTML 頁面與一些頁面所需的 JavaScript 一起送回瀏覽器。瀏覽器接收 HTML 文件並將其顯示出來。此時，user 可以看見整個頁面。但無法與網頁互動。但這種狀態不會持續超過幾毫秒。
+- **step 3 :** 然後來到 hydration，瀏覽器從 server 下載 JavaScript，接下來網頁才具有互動性。
+  > hydration 的意思是會在 client 端把 server side 先渲染出的 DOM element 加上事件監聽器等屬性，讓 DOM element 變為動態且具有互動性，能夠響應後續的資料變化。
+
+## SSG（Static Site Generation）靜態網站生成
+
+- SSG 是一種頁面渲染模式，其中「畫面渲染」和「資料拉取」在構建時完成，並且生成「靜態檔案」，而不是在伺服器接收請求後才執行。
+- 這種方式具有以下特點：
+  - TTFB（Time to First Byte）、FCP（First Contentful Paint）和 TTI（Time to Interactive）表現較佳。
+  - 隨著頁面數量增加，構建時間可能會變長。
+  - 資料在構建時寫死，無法動態更新。
+
+## ISR（Incremental Static Regeneration）增量靜態再生成
+
+## 該用哪一種？
+
+- 資料不斷地變化而且不需要 SEO 的內部系統 dashboard 適合用 CSR。
+- 資料變化率不低可是需要 SEO，可以考慮用 SSR。
+- 資料幾乎不用更新像活動或行銷網站，SEO 也很重要，用 SSG 適合。
+- 資料不太需要更新或是有太多頁面而且需要 SEO 例如商品頁，那 ISR 就是個好選擇。
