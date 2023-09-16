@@ -5,12 +5,10 @@ import { IoArrowDownOutline } from 'react-icons/io5';
 import { IoNewspaperSharp } from 'react-icons/io5';
 import { SiGithub, SiTwitter } from 'react-icons/si';
 import { InView } from 'react-intersection-observer';
-
 import { trackEvent } from '@/lib/analytics';
 import { getAllFilesFrontmatter, getFeatured } from '@/lib/mdx.server';
 import useInjectContentMeta from '@/hooks/useInjectContentMeta';
 import useLoaded from '@/hooks/useLoaded';
-
 import Accent from '@/components/Accent';
 import BlogCard from '@/components/content/blog/BlogCard';
 import ProjectCard from '@/components/content/projects/ProjectCard';
@@ -19,7 +17,6 @@ import ButtonLink from '@/components/links/ButtonLink';
 import CustomLink from '@/components/links/CustomLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
-import TC from '@/components/TC';
 import Tooltip from '@/components/Tooltip';
 
 export default function IndexPage({
@@ -93,7 +90,7 @@ export default function IndexPage({
               className='mt-4 flex flex-wrap gap-4 gap-y-2 md:mt-8'
             >
               <UnstyledLink
-                href='https://bobotsai.link/cv'
+                href='https://bit.ly/bobotsai-cv'
                 className={clsx(
                   'inline-flex items-center gap-1 text-sm font-medium md:text-base',
                   'text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white',
@@ -108,7 +105,7 @@ export default function IndexPage({
                 <span>Resume</span>
               </UnstyledLink>
               <UnstyledLink
-                href='https://twitter.com/bobotsai'
+                href='https://bit.ly/bobotsai-twitter'
                 className={clsx(
                   'inline-flex items-center gap-1 text-sm font-medium md:text-base',
                   'group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white',
@@ -120,7 +117,7 @@ export default function IndexPage({
                 }}
               >
                 <SiTwitter className='shrink-0 transition-colors group-hover:text-[#1da1f2]' />
-                <span>@bobotsai</span>
+                <span>@bobotsai_</span>
               </UnstyledLink>
               <UnstyledLink
                 href='https://github.com/bo930236'
@@ -149,14 +146,6 @@ export default function IndexPage({
           >
             <IoArrowDownOutline className='h-8 w-8 animate-bounce md:h-10 md:w-10' />
           </UnstyledLink>
-          <TC
-            className={clsx(
-              'absolute bottom-0 right-6',
-              'translate-y-[37%] transform-gpu',
-              'w-[calc(100%-3rem)] md:w-[600px] 2xl:w-[900px]',
-              'z-[-1] opacity-70 dark:opacity-30'
-            )}
-          />
         </section>
 
         <InView triggerOnce rootMargin='-40% 0px'>
