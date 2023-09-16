@@ -306,7 +306,7 @@ export async function getStaticProps() {
   const projects = await getAllFilesFrontmatter('projects');
 
   const featuredPosts = getFeatured(blogs, [
-    'ch-Next.js-Rendering-Pattern',
+    'ch-nextjs-rendering-pattern',
     'nextjs-storybook-tailwind',
   ]);
   const featuredProjects = getFeatured(projects, ['side-projects']);
