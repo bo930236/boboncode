@@ -300,7 +300,7 @@ export async function getStaticProps() {
   ]);
   const featuredProjects = getFeatured(projects, ['side-projects']);
 
-  const introPosts = getFeatured(blogs, ['nextjs-storybook-tailwind']);
+  const introPosts = getFeatured(blogs, ['nextjs-storybook-tailwind','nextjs-rendering-pattern']);
 
   return {
     props: {
