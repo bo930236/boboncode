@@ -15,11 +15,7 @@ export default function ShareTweetButton({
   className,
   ...rest
 }: ShareTweetButtonProps) {
-<<<<<<< HEAD
-  const text = `I just read an article about ${title} by @bobotsai.`;
-=======
   const text = `I just read an article about ${title} by @bobotsai_.`;
->>>>>>> d3357274b544633a59fe68d4d2f72fad93ae09bb
   const intentUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(
     url
   )}&text=${encodeURIComponent(text)}%0A%0A`;
