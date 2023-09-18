@@ -132,11 +132,11 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
         </>
       ),
     },
-    // {
-    //   href: 'https://clarence.link/um',
-    //   text: 'Analytics',
-    //   tooltip: 'bobotsai views and visitors analytics',
-    // },
+    {
+      href: 'https://clarence.link/um',
+      text: 'Analytics',
+      tooltip: 'bobotsai views and visitors analytics',
+    },
     {
       href: '/statistics',
       text: 'Statistics',
