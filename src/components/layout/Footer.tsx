@@ -173,7 +173,7 @@ const socials: Social[] = [
     ),
   },
   {
-    href: 'https://clarence.link/linkedin',
+    href: 'https://bit.ly/bobotsai-linkedin',
     icon: SiLinkedin,
     id: 'Linkedin',
     text: (
@@ -183,12 +183,12 @@ const socials: Social[] = [
     ),
   },
   {
-    href: 'https://clarence.link/twt',
+    href: 'https://bit.ly/bobotsai-twitter',
     icon: SiTwitter,
     id: 'Twitter',
     text: (
       <>
-        Follow me on <Accent className='font-medium'>Twitter</Accent>!
+        Follow me on <Accent className='font-medium'>Twitter</Accent>
       </>
     ),
   },
