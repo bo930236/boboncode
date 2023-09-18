@@ -52,17 +52,18 @@ export default function IndexPage({
               className='mt-1 text-3xl md:text-5xl 2xl:text-6xl'
               data-fade='2'
             >
-              You can call me <Accent>Bobo</Accent>
+              This is <Accent>BoboNCode</Accent> and you can call me{' '}
+              <Accent>Bobo</Accent>.
             </h1>
             <p
               className={clsx(
                 'mt-4 max-w-4xl text-gray-700 dark:text-gray-200 md:mt-6',
-                'md:text-lg 2xl:text-xl'
+                'md:text-xl 2xl:text-2xl'
               )}
               data-fade='3'
             >
-              I work with React Ecosystem, and write to teach people how to
-              rebuild and redefine fundamental concepts through mental models.
+              I currently work as a Frontend Developer with React and Next.js.
+              This is where I record my thoughts, my notes, and my experiences.
             </p>
             <p
               className='mt-3 max-w-4xl leading-relaxed text-gray-700 dark:text-gray-200 md:mt-4 md:text-lg 2xl:text-xl'
