@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { openGraph } from '@/lib/helper.client';
 
 const defaultMeta = {
-  title: 'boboncode',
+  title: 'BoboNCode',
   siteName: 'boboncode.com',
   description:
     'An online portfolio and blog by Bobo Tsai. Showcase of my projects, and some of my thoughts about website development.',

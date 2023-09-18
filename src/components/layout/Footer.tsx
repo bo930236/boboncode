@@ -135,7 +135,7 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
     {
       href: 'https://analytics.umami.is/share/jlgOMD7rbaaws6mi/boboncode',
       text: 'Analytics',
-      tooltip: 'boboncode views and visitors analytics',
+      tooltip: 'BoboNCode views and visitors analytics',
     },
     {
       href: '/statistics',
