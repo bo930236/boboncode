@@ -8,8 +8,8 @@ const defaultMeta = {
   siteName: 'boboncode.com',
   description:
     'An online portfolio and blog by Bobo Tsai. Showcase of my projects, and some of my thoughts about website development.',
-  url: 'https://www.boboncode.com/',
-  image: 'https://www.boboncode.com/favicon/large-og.jpg',
+  url: 'https://boboncode.com/',
+  image: 'https://boboncode.com/favicon/large-og.jpg',
   type: 'website',
   robots: 'follow, index',
 };
