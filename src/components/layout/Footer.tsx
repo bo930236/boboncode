@@ -82,7 +82,7 @@ function SocialLinks() {
                 ? 'Click the mail logo to copy'
                 : 'Copied to clipboard 🥳'}
               <Accent className='inline-block font-medium'>
-                bo930236@gmail.com
+                boboncode@gmail.com
               </Accent>
             </div>
           }
@@ -124,7 +124,7 @@ function SocialLinks() {
 const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
   [
     {
-      href: 'https://github.com/bo930236/bobotsai',
+      href: 'https://github.com/bo930236/boboncode',
       text: 'Source Code',
       tooltip: (
         <>
@@ -133,9 +133,9 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
       ),
     },
     {
-      href: 'https://clarence.link/um',
+      href: 'https://analytics.umami.is/share/jlgOMD7rbaaws6mi/boboncode',
       text: 'Analytics',
-      tooltip: 'bobotsai views and visitors analytics',
+      tooltip: 'boboncode views and visitors analytics',
     },
     {
       href: '/statistics',
@@ -173,7 +173,7 @@ const socials: Social[] = [
     ),
   },
   {
-    href: 'https://bit.ly/bobotsai-linkedin',
+    href: 'https://bit.ly/boboncode-linkedin',
     icon: SiLinkedin,
     id: 'Linkedin',
     text: (
@@ -183,7 +183,7 @@ const socials: Social[] = [
     ),
   },
   {
-    href: 'https://bit.ly/bobotsai-twitter',
+    href: 'https://bit.ly/boboncode-twitter',
     icon: SiTwitter,
     id: 'Twitter',
     text: (

@@ -39,7 +39,7 @@ export default function CloudinaryImg({
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const urlBlurred = buildUrl(publicId, {
-    cloud: { cloudName: 'bobotsai' },
+    cloud: { cloudName: 'boboncode' },
     transformations: {
       effect: {
         name: 'blur:1000',
@@ -52,7 +52,7 @@ export default function CloudinaryImg({
   });
   const url = buildUrl(publicId, {
     cloud: {
-      cloudName: 'bobotsai',
+      cloudName: 'boboncode',
     },
     transformations: {
       rawTransformation: aspect

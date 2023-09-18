@@ -42,7 +42,7 @@ export default function BlogCard({
             <CloudinaryImg
               noStyle
               className='pointer-events-none overflow-hidden rounded-t-md'
-              publicId={`bobotsai/banner/${post.banner}`}
+              publicId={`boboncode/banner/${post.banner}`}
               alt='Photo taken from unsplash'
               width={1200}
               height={(1200 * 2) / 5}

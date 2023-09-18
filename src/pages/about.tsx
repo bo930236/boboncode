@@ -29,7 +29,7 @@ export default function AboutPage() {
             <div className='mt-4' data-fade='2'>
               <CloudinaryImg
                 className='float-right ml-6 w-40 md:w-72'
-                publicId='bobotsai/about/self-3-cropped_cyfuvn.jpg'
+                publicId='boboncode/about/self-3-cropped_cyfuvn.jpg'
                 width='1500'
                 height='1695'
                 alt='Photo of me'

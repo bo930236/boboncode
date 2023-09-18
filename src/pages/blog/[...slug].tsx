@@ -52,7 +52,7 @@ export default function SingleBlogPage({
   );
 
   //#region  //*=========== Link Constants ===========
-  const OG_BANNER_LINK = `https://res.cloudinary.com/bobotsai/image/upload/f_auto,c_fill,ar_4:5,w_1200/bobotsai/banner/${frontmatter.banner}`;
+  const OG_BANNER_LINK = `https://res.cloudinary.com/boboncode/image/upload/f_auto,c_fill,ar_4:5,w_1200/boboncode/banner/${frontmatter.banner}`;
   //#endregion  //*======== Link Constants ===========
 
   //#region  //*=========== Blog Language ===========
@@ -108,7 +108,7 @@ export default function SingleBlogPage({
           <div className='layout'>
             <div className='pb-4 dark:border-gray-600'>
               <CloudinaryImg
-                publicId={`bobotsai/banner/${frontmatter.banner}`}
+                publicId={`boboncode/banner/${frontmatter.banner}`}
                 alt={`Photo from unsplash: ${frontmatter.banner}`}
                 width={1200}
                 height={(1200 * 2) / 5}
@@ -183,7 +183,7 @@ export default function SingleBlogPage({
 
             <ShareTweetButton
               className='mt-12'
-              url={`https://bobotsai/blog/${frontmatter.slug}`}
+              url={`https://boboncode/blog/${frontmatter.slug}`}
               title={frontmatter.title}
             />
 

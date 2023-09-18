@@ -93,7 +93,7 @@ export default function IndexPage({
               className='mt-4 flex flex-wrap gap-4 gap-y-2 md:mt-8'
             >
               <UnstyledLink
-                href='https://bobotsai.link/cv'
+                href='https://boboncode.link/cv'
                 className={clsx(
                   'inline-flex items-center gap-1 text-sm font-medium md:text-base',
                   'text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white',
@@ -108,7 +108,7 @@ export default function IndexPage({
                 <span>Resume</span>
               </UnstyledLink>
               <UnstyledLink
-                href='https://twitter.com/bobotsai'
+                href='https://twitter.com/boboncode'
                 className={clsx(
                   'inline-flex items-center gap-1 text-sm font-medium md:text-base',
                   'group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white',
@@ -120,7 +120,7 @@ export default function IndexPage({
                 }}
               >
                 <SiTwitter className='shrink-0 transition-colors group-hover:text-[#1da1f2]' />
-                <span>@bobotsai</span>
+                <span>@boboncode</span>
               </UnstyledLink>
               <UnstyledLink
                 href='https://github.com/bo930236'

@@ -66,7 +66,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
         <section className=''>
           <div className='layout'>
             <CloudinaryImg
-              publicId={`bobotsai/${frontmatter.banner}`}
+              publicId={`boboncode/${frontmatter.banner}`}
               alt={frontmatter.title}
               width={1440}
               height={792}

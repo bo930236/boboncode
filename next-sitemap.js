@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://bobotsai.com/',
+  siteUrl: 'https://www.boboncode.com/',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
