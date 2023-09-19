@@ -7,7 +7,7 @@ const defaultMeta = {
   title: 'BoboNCode',
   siteName: 'boboncode.com',
   description:
-    'An online portfolio and blog by Bobo Tsai. Showcase of my projects, and some of my thoughts about website development.',
+    'An online blog and portfolio by Bobo Tsai. A showcase of my thoughts, my notes about software development, and a glimpse into my life experiences.',
   url: 'https://boboncode.com/',
   image: 'https://boboncode.com/favicon/large.jpg',
   type: 'website',
@@ -60,7 +60,7 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content='@th_clarence' />
+      <meta name='twitter:site' content='@boboncode' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
