@@ -13,6 +13,7 @@ import useLoaded from '@/hooks/useLoaded';
 
 import Accent from '@/components/Accent';
 import BlogCard from '@/components/content/blog/BlogCard';
+import ShortsCard from '@/components/content/card/ShortsCard';
 import ProjectCard from '@/components/content/projects/ProjectCard';
 import Layout from '@/components/layout/Layout';
 import ButtonLink from '@/components/links/ButtonLink';
@@ -25,11 +26,13 @@ import Tooltip from '@/components/Tooltip';
 export default function IndexPage({
   featuredPosts,
   featuredProjects,
+  featuredShorts,
   introPosts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const populatedPosts = useInjectContentMeta('blog', featuredPosts);
   const populatedIntro = useInjectContentMeta('blog', introPosts);
   const populatedProjects = useInjectContentMeta('projects', featuredProjects);
+  const populatedShorts = useInjectContentMeta('library', featuredShorts);
 
   const isLoaded = useLoaded();
 
@@ -297,6 +300,42 @@ export default function IndexPage({
             </section>
           )}
         </InView>
+        <InView triggerOnce rootMargin='-40% 0px'>
+          {({ ref, inView }) => (
+            <section
+              ref={ref}
+              className={clsx('py-20', inView && 'fade-in-start')}
+            >
+              <article className='layout' data-fade='0'>
+                <h2 className='text-2xl md:text-4xl' id='library'>
+                  <Accent>Shorts</Accent>
+                </h2>
+                <p className='mt-2 text-gray-600 dark:text-gray-300'>
+                  Short article that's not long enough to be a blog post,
+                  usually comes from my personal notes.
+                </p>
+                <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+                  {populatedShorts.map((short, i) => (
+                    <ShortsCard
+                      key={short.slug}
+                      short={short}
+                      className={clsx(i > 2 && 'hidden sm:block')}
+                    />
+                  ))}
+                </ul>
+                <ButtonLink
+                  className='mt-4'
+                  href='/shorts'
+                  onClick={() =>
+                    trackEvent('Home: See more shorts', { type: 'navigate' })
+                  }
+                >
+                  See more shorts
+                </ButtonLink>
+              </article>
+            </section>
+          )}
+        </InView>
       </main>
     </Layout>
   );
@@ -305,19 +344,20 @@ export default function IndexPage({
 export async function getStaticProps() {
   const blogs = await getAllFilesFrontmatter('blog');
   const projects = await getAllFilesFrontmatter('projects');
+  const shorts = await getAllFilesFrontmatter('library');
 
-  const featuredPosts = getFeatured(blogs, [
-    'ch-nextjs-rendering-pattern',
-    'nextjs-storybook-tailwind',
-  ]);
+  const featuredPosts = getFeatured(blogs, ['nextjs-rendering-pattern']);
   const featuredProjects = getFeatured(projects, ['side-projects']);
-
-  const introPosts = getFeatured(blogs, ['nextjs-storybook-tailwind']);
+  const featuredShorts = getFeatured(shorts, [
+    'mac/iterm2+ohmyzsh-configurations',
+  ]);
+  const introPosts = getFeatured(blogs, ['ch-nextjs-rendering-pattern']);
 
   return {
     props: {
       featuredPosts,
       featuredProjects,
+      featuredShorts,
       introPosts,
     },
   };

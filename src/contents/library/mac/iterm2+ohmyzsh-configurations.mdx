@@ -1,0 +1,140 @@
+---
+title: 'iTerm2 + Oh My Zsh Configurations'
+tags: 'mac'
+description: '幫 Mac Terminal 上色'
+---
+
+## 安裝 Homebrew
+
+[Homebrew](https://brew.sh/) 是 Mac OSX 上的的套件管理工具，是方便安裝管理 OSX 裡需要用到但預設沒安裝的套件。  
+Homebrew 的安裝只需要打開終端機，輸入：
+
+```
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+輸入以下指令確認是否有安裝成功：
+
+```
+ brew --version  //成功會跑出版本號，ex: Homebrew 4.0.20
+```
+
+## 安裝 iTerm2
+
+iTerm2 跟 terminal 一樣都是終端機，但內建終端機在美化上會有一些限制，而 iTerm2 如果要做美化的話比較容易。  
+可以透過 [官網下載](https://iterm2.com/) 或 homebrew 安裝，我習慣用 homebrew，所以在終端機輸入：
+
+```
+ brew install --cask iterm2
+```
+
+## 變更 iTerm2 顏色主題
+
+更改顏色主題，iTerm2 本身就有很多配色可以選擇，可以透過 **快捷鍵 cmd + i 打開 iTerm2 後，選擇上方 Colors 分頁，在右下方的 Color Presets** 選擇自己想要的配色。  
+如果內建的不夠使用的話，也可以到 [Iterm2-color-schemes](https://iterm2colorschemes.com/) 下載喜歡的配色（右上方可以下載全部）。
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/shorts/mac/iterm2+ohmyzsh-configurations/iterm2-color-schemes'
+  alt='iterm2-color-schemes'
+  width={600}
+  height={420}
+/>
+
+進到 repo 中的 schemes 資料夾，有許多副檔名為 .itermcolors 的配色檔可以載入，這裡我選擇 Argonaut.itermcolors。
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/shorts/mac/iterm2+ohmyzsh-configurations/path'
+  alt='path'
+  width={600}
+  height={400}
+/>
+
+將選好的配色透過 **快捷鍵 cmd + i 打開 iTerm2 後，選擇上方 Colors 分頁，在右下方的 Color Presets 選擇 import 匯入 Argonaut.itermcolors 後，再點選一次 Color Preset 就可以選取。**
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/shorts/mac/iterm2+ohmyzsh-configurations/argonaut'
+  alt='argonaut'
+  width={600}
+  height={600}
+/>
+## 安裝 Oh My Zsh
+
+[Oh My Zsh](https://ohmyz.sh/) 是一個用來管理 ZSH 設定檔的框架，提供許多外掛和主題可以選擇。  
+透過 iTerm2 輸入：
+
+```
+ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+### 到 **.zshrc** 更改設定檔
+
+#### 套用主題 agnoster
+
+iTerm2 輸入：
+
+```
+ open ~/.zshrc
+```
+
+輸入完會打開 zsh 設定檔，找到 ZSH_THEME，將這段內容改成下方，最後按 cmd + s 存檔：
+
+```
+ ZSH_THEME="agnoster"
+```
+
+#### Oh My Zsh 建議外掛 - [Auto Suggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md?source=post_page-----77d5aae87b10--------------------------------)
+
+自動提示之前輸入過的指令，用起來方便很多  
+一樣使用 homebrew 安裝，在 iTerm2 輸入：
+
+```
+ brew install zsh-autosuggestions
+```
+
+打開 zsh 設定檔，找到 plugins=
+
+```
+ open ~/.zshrc
+```
+
+在 plugins 的欄位中加入 zsh-autosuggestion 後存檔（若有多個 plugins 用空白間隔開）
+
+```
+ plugins=(zsh-autosuggestions)
+```
+
+#### Oh My Zsh 建議外掛 - [Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+
+在 iTerm2 輸入：
+
+```
+ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
+
+打開 zsh 設定檔，找到 plugins=
+
+```
+ open ~/.zshrc
+```
+
+在 plugins 的欄位中加入 zsh-syntax-highlighting 後存檔（若有多個 plugins 用空白間隔開）
+
+```
+ plugins=(zsh-syntax-highlighting)
+```
+
+## 其他注意事項
+
+### nvm 無法使用
+
+第一次設定 zsh 可能會遇到 nvm 不能使用的問題，這時候可以在 **.zshrc** 檔案最下方加入：
+
+```
+ # nvm
+ export NVM_DIR="$HOME/.nvm"
+ [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+ [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
