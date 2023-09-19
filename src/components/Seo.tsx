@@ -9,7 +9,7 @@ const defaultMeta = {
   description:
     'An online blog and portfolio by Bobo Tsai. A showcase of my thoughts, my notes about software development, and a glimpse into my life experiences.',
   url: 'https://boboncode.com/',
-  image: 'https://boboncode.com/favicon/large.jpg',
+  image: 'https://boboncode.com/favicon/logo.jpg',
   type: 'website',
   robots: 'follow, index',
 };

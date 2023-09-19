@@ -15,7 +15,7 @@ export function openGraph({
   templateTitle,
   description,
   banner,
-  logo = 'https://boboncode.com/favicon/large.jpg',
+  logo = 'https://boboncode.com/favicon/logo.jpg',
   isBlog = false,
 }: OpenGraphType): string {
   const ogLogo = encodeURIComponent(logo);
@@ -28,7 +28,7 @@ export function openGraph({
   if (isBlog) {
     const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
 
-    return `https://og.clarence.link/api/blog?templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
+    return `https://og-cocmvg7lx-clarencekanisius.vercel.app/api/blog?templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
   }
 
   return `https://og-cocmvg7lx-clarencekanisius.vercel.app/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
