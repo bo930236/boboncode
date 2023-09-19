@@ -28,10 +28,10 @@ export function openGraph({
   if (isBlog) {
     const ogBanner = banner ? encodeURIComponent(banner.trim()) : undefined;
 
-    return `https://og-cocmvg7lx-clarencekanisius.vercel.app/api/blog?templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
+    return `https://boboncode-og.vercel.app/api/blog?templateTitle=${ogTemplateTitle}&banner=${ogBanner}`;
   }
 
-  return `https://og-cocmvg7lx-clarencekanisius.vercel.app/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
+  return `https://boboncode-og.vercel.app/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
     ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
   }`;
 }
