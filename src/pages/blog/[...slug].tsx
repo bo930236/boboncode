@@ -145,7 +145,7 @@ export default function SingleBlogPage({
               </div>
               {!frontmatter?.englishOnly && (
                 <CustomLink
-                  href={`/blog/${isEnglish ? 'id-' : ''}${cleanSlug}`}
+                  href={`/blog/${isEnglish ? 'ch-' : ''}${cleanSlug}`}
                   className='mt-4'
                 >
                   Read in {isEnglish ? 'Traditional Chinese' : 'English'}
