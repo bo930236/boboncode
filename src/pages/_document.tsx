@@ -27,7 +27,7 @@ class MyDocument extends Document {
             async
             defer
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ''}
-            src='https://umami.thcl.dev/script.js'
+            src='https://analytics.umami.is/script.js'
             data-domains='boboncode.com'
           />
         </Head>

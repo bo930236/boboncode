@@ -15,7 +15,7 @@ export function openGraph({
   templateTitle,
   description,
   banner,
-  logo = 'https://boboncode.com/favicon/logo.jpg',
+  logo = 'https://www.boboncode.com/favicon/logo.jpg',
   isBlog = false,
 }: OpenGraphType): string {
   const ogLogo = encodeURIComponent(logo);
