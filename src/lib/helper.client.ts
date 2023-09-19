@@ -32,7 +32,7 @@ export function openGraph({
   }
 
   return `https://boboncode-og.vercel.app/api/gradient?siteName=${ogSiteName}&description=${ogDesc}&logo=${ogLogo}${
-    ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}&theme=dark` : ''
+    ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
   }`;
 }
 
