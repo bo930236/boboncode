@@ -60,7 +60,7 @@ function LikeButtonHeart({ likes }: { likes: number }) {
             likes === 5 && 'emoji-animate'
           )}
         >
-          🥳
+          🐰
         </div>
       </div>
 

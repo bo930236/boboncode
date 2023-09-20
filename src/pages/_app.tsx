@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (
       window.location.host !==
         (process.env.NEXT_PUBLIC_BLOCK_DOMAIN_WHITELIST ||
-          'bobomcode.vercel.app') &&
+          'boboncode.vercel.app') &&
       blockDomainMeta
     ) {
       if (getFromLocalStorage('incrementMetaFlag') !== 'false') {
