@@ -349,7 +349,7 @@ export async function getStaticProps() {
   const featuredPosts = getFeatured(blogs, ['nextjs-rendering-pattern']);
   const featuredProjects = getFeatured(projects, ['side-projects']);
   const featuredShorts = getFeatured(shorts, [
-    'mac/iterm2+ohmyzsh-configurations',
+    'mac/iterm2-ohmyzsh-configurations',
   ]);
   const introPosts = getFeatured(blogs, ['ch-nextjs-rendering-pattern']);
 
