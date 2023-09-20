@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import { RoughNotation } from 'react-rough-notation';
 
 import GithubCard from '@/components/content/card/GithubCard';
 import { Pre } from '@/components/content/Pre';
@@ -21,6 +22,7 @@ const MDXComponents = {
   TechIcons,
   TweetCard,
   GithubCard,
+  RoughNotation,
 };
 
 export default MDXComponents;

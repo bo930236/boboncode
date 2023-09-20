@@ -63,7 +63,7 @@ export function Pre({
             'rounded p-1 text-lg transition-colors md:block',
             'border border-gray-300 dark:border-gray-600',
             'text-gray-700 dark:text-gray-300',
-            'bg-[#f2f7fc] hover:bg-gray-100 dark:bg-[#22272e] dark:hover:bg-gray-700',
+            'bg-[#cadef1] hover:bg-gray-100 dark:bg-[#22272e] dark:hover:bg-gray-700',
           ])}
         >
           {isCopied ? <BiCheck /> : <BiCopy />}

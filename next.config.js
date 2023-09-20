@@ -17,11 +17,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/library/absolute-import',
-        destination: '/shorts/react/absolute-import',
-        permanent: true,
-      },
-      {
         source: '/library',
         destination: '/shorts',
         permanent: true,
