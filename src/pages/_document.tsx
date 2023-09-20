@@ -25,9 +25,8 @@ class MyDocument extends Document {
           />
           <script
             async
-            src='https://analytics.umami.is/script.js'
+            src='http://localhost:3000/script.js'
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ''}
-            data-domains='boboncode.com'
           />
         </Head>
         <body className='bg-white antialiased transition-colors dark:bg-dark dark:text-white'>

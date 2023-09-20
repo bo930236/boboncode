@@ -133,7 +133,7 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
       ),
     },
     {
-      href: 'https://analytics.umami.is/share/XPmHebjYTMzWubAm/BoboNCode',
+      href: 'http://localhost:3000/share/zIQXKmRZ0QO29yAj/BoboNcode',
       text: 'Analytics',
       tooltip: 'BoboNCode views and visitors analytics',
     },
