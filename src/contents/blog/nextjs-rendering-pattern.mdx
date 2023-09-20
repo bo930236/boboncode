@@ -1,0 +1,189 @@
+---
+title: 'Next.js Rendering Pattern'
+publishedAt: '2023-07-10'
+lastUpdated: '2023-09-13'
+description: 'Learn about the page rendering patterns in Next.js.'
+banner: 'nextjs-rendering-pattern'
+tags: 'nextjs,render'
+---
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/next.js-page-rendering_prnsjr'
+  alt='next.js-page-rendering'
+  width={730}
+  height={900}
+/>
+[Image copid from this !](https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/)
+
+## Web Performance Metrics
+
+- Time to First Byte (TTFB): The time it takes from sending an HTTP request to receiving the first byte of the HTTP response.
+- First Paint (FP): The time it takes for any pixel to be painted on the page by the browser. It may be a simple background color update or non-significant content and does not represent page content completeness.
+- First Contentful Paint (FCP): The time it takes for the first display of content on the website after a user arrives. Content can be text, images (including background images), non-white canvases or SVGs, and text with Web fonts that are loading.
+- Largest Contentful Paint (LCP): The time it takes for the largest content element within the visible area to be rendered on the screen, used to estimate when the main content of the page is visible to the user.
+- Time to Interactive (TTI): The time it takes for a page to transition from not being interactive to being able to respond to user input continuously.
+
+## Client-Side Rendering (CSR)
+
+- One of the most common web rendering patterns.
+- Used by Single Page Applications (SPAs) like React and Vue.
+
+  <CloudinaryImg
+    mdx
+    publicId='boboncode/blogs/nextjs-rendering-pattern/client-side-rendering'
+    alt='client-side-rendering'
+    width={730}
+    height={450}
+  />
+  [Image copid from this !](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+
+### Steps:
+
+1. Initially, no page is generated on the server. When a user visits the page, the client sends a request to the server, and the page creation begins on the server. The server responds with an almost empty HTML document containing the basic structure and references to React's JavaScript code.
+2. The browser starts downloading the JavaScript bundle, which is the main code for the entire application. For larger apps, this may take some time unless code splitting (e.g., React.lazy()) is used.
+3. Once the JavaScript code is fully downloaded, the browser starts executing the React code.
+4. The client fetches data via APIs, React updates the UI, and after completion, the page is fully rendered and interactive.
+
+## Pre-rendering in Next.js
+
+By default, Next.js pre-renders each page. This means Next.js generates HTML for each page in advance, rather than relying entirely on client-side JavaScript.
+
+### No Pre-rendering vs. Pre-rendering
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/no-pre-rendering'
+  alt='no-pre-rendering'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://nextjs.org/learn/basics/data-fetching/pre-rendering)
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/pre-rendering'
+  alt='pre-rendering'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://nextjs.org/learn/basics/data-fetching/pre-rendering)
+
+### Two Forms of Pre-rendering
+
+- Server-Side Rendering (SSR): Pre-rendering method that generates HTML on every request.
+- Static Generation (SSG): Pre-rendering method that generates HTML at build time, with the generated HTML reused for each request.
+
+Next.js allows choosing different pre-rendering modes for each page, creating a "hybrid" Next.js application.
+
+## Server-Side Rendering (SSR)
+
+- In SSR, the server generates HTML files for each request, ensuring the server handles user requests.
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/server-side-rendering'
+  alt='server-side-rendering'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+
+### Steps:
+
+1. When a request is sent from the client to the server, the server starts generating a new copy of the web page (HTML document).
+2. The newly generated HTML, along with the minimal JavaScript required for that page, is sent back to the browser.
+3. Upon receiving the HTML, the browser renders the page. Users can see the entire page but cannot interact with it during this short period.
+4. Hydration occurs as the browser downloads JavaScript from the server, making the page interactive.
+
+> Hydration involves adding event listeners and other properties to server-side rendered DOM elements, making them dynamic and interactive, capable of responding to data changes.
+
+## Static Site Generation (SSG)
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/static-generation'
+  alt='static-generation'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://nextjs.org/learn/basics/data-fetching/two-forms)
+
+- Content and data rendering are completed at build time, and the resulting HTML files become "static" and can be cached on a Content Delivery Network (CDN). Subsequent users requesting the same page can retrieve the complete HTML directly from the CDN, resulting in a better Time to First Byte (TTFB) and improved website performance.
+- When a user visits a page, they obtain the pre-rendered static file from the server, and the page is displayed instantly.
+
+## Incremental Static Regeneration (ISR) - Extending SSG
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/incremental-static-regeneration'
+  alt='incremental-static-regeneration'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://vercel.com/docs/frameworks/nextjs/incremental-static-regeneration)
+ISR is similar to SSG but addresses the issue of not being able to update data content
+at runtime with SSG. HTML files are also cached on a CDN, reducing the server's load
+compared to SSR.
+
+- Some websites require periodic updates to content, such as the latest news on a news site or special offers in a product catalog. Traditional SSG cannot automatically update this content after generating static pages, requiring a full site rebuild, which can lead to unnecessary loading and wait times, especially for sites with thousands of pages. ISR aims to solve this issue.
+- When a user visits a page for the first time, a fallback page is initially returned, which may include placeholders and skeletons. While rendering the fallback page, the required data is fetched. Once the data is ready, the complete page is cached on the CDN. Subsequent users requesting the same page can retrieve it directly from the CDN, just like with SSG.
+- In Next.js, you can set the interval for re-validation and page updates. During re-validation, the previous cached version is served until the latest version is generated (known as "stale-while-revalidate"). Users will see the updated page when they reload it. If the rebuild fails, the old page is displayed.
+
+## Comparison of CSR, SSR, SSG, and ISR
+
+Here is a comparison of the four rendering modes:
+
+> Client-Side Rendering (CSR)
+
+- Pros:
+  - Reduces server load.
+  - Fast page transitions.
+- Cons:
+  - Initial blank page or flash.
+  - SEO challenges.
+  - Performance issues for large apps.
+
+> Server-Side Rendering (SSR)
+
+- Pros:
+  - SEO benefits.
+  - Fast initial rendering.
+- Cons:
+  - Server-intensive.
+
+> Static Site Generation (SSG)
+
+- Pros:
+  - SEO advantages.
+  - Fast loading.
+  - Security.
+- Cons:
+  - Difficult to update.
+  - Longer build times for large sites.
+
+> Incremental Static Regeneration (ISR)
+
+- Pros:
+  - SEO benefits.
+  - Always up-to-date data.
+  - Fast initial rendering.
+- Cons:
+  - Data updates not immediate.
+  - Longer build times for large sites.
+
+## How to Choose the Right Rendering Mode?
+
+- Use CSR when data changes frequently and SEO is not critical, suitable for internal management systems like ERPs or order management systems.
+- Use SSR when data changes frequently, and page content changes with each request, and SEO is crucial, such as e-commerce websites with frequently updated content.
+- Use SSG when data changes infrequently, and SEO is essential, suitable for event pages or blogs.
+- Use ISR when data changes infrequently or there are many pages, and SEO is crucial, such as product pages.
+
+---
+
+References:
+
+- [NEXT.JS Pre — rendering and Data Fetching](https://nextjs.org/learn/basics/data-fetching)
+- [SSR-SSG-ISR-CSR in Next.js — The Ultimate Guide](https://medium.com/@idrazhar/ssr-ssg-isr-csr-in-next-js-the-ultimate-guide-9d1b90aa995e)
+- [[note] Rendering Pattern (feat Next.js)](https://pjchender.dev/react/note-react-rendering-pattern/)
+- [note - Understanding Next.js Data Fetching (CSR, SSR, SSG, ISR)](https://hackmd.io/aCjbg0QtQrqCYoe_wugfBw)

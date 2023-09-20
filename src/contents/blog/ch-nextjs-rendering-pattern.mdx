@@ -1,0 +1,189 @@
+---
+title: 'Next.js Rendering Pattern'
+publishedAt: '2023-07-10'
+lastUpdated: '2023-09-13'
+description: '了解 Next.js 頁面渲染模式'
+banner: 'nextjs-rendering-pattern'
+tags: 'nextjs,render'
+---
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/next.js-page-rendering_prnsjr'
+  alt='next.js-page-rendering'
+  width={730}
+  height={900}
+/>
+[Image copid from this !](https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/)
+
+## Web 性能指標
+
+- Time to First Byte（TTFB）  
+  發出 HTTP request 到獲得 HTTP Response 第一個 byte 的時間
+- First Paint（FP）  
+  任何一個 pixel（像素）被瀏覽器繪製到頁面上的時間。可能是簡單的背景色更新或不引人注意的內容，它並不表示頁面內容完整性
+- First Contentful Paint（FCP）  
+  當瀏覽者到達網站之後，首次顯示網站內容需要的時間，內容可以是文本、圖片（包含背景圖）、非白色的 canvas 或 SVG，也包括帶有正在加載中的 Web 字體的文本。
+- Largest Contentful Paint（LCP）  
+  可視區域中最大的內容元素呈現到屏幕上的時間，用以估算頁面的主要內容對用戶可見時間。
+- Time to Interactive（TTI）  
+  頁面從不能互動到可以接收事件產生互動性的時間，瀏覽器已經可以持續性的響應用戶的輸入。
+
+## CSR（Client-Side Rendering）客戶端渲染
+
+- 最常見的網頁渲染模式之一。
+- 這種渲染方式由單頁應用程序 (SPA) 使用，ex: React 和 Vue。
+
+  <CloudinaryImg
+    mdx
+    publicId='boboncode/blogs/nextjs-rendering-pattern/client-side-rendering'
+    alt='client-side-rendering'
+    width={730}
+    height={450}
+  />
+  [Image copid from this !](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+
+- **step 1 :** 一開始在 Server 端未產生任何頁面，當 User 進到頁面時，Client 向 Server 發出 requests，此時畫面才開始在 Server 端製作。server 回傳 response 給瀏覽器，而回傳的 HTML 文件幾乎空白，僅包含基本結構和 React 的 JavaScript 程式碼引用。
+- **step 2 :** 瀏覽器開始下載 JavaScript bundle，這是整個應用程序的主要程式碼。對於大型應用程序，可能需要花一些時間，除非手動將代碼拆分（ex:React.lazy()）。
+- **step 3 :** 一旦 JavaScript 程式碼被完全下載，瀏覽器開始執行 React code。
+- **step 4 :** Client fetch API 拿到 DATA，React 更新 UI，執行完畢後，頁面才完整呈現與具有互動性。
+
+## Next.js 中的預渲染（Pre-rendering）
+
+default 情況下，Next.js 會預渲染每個頁面，這意味著 Next.js 會提前為每個頁面生成 HTML，而不是全部由 client 端 JavaScript 完成。預渲染可以帶來更好的性能和 SEO。
+
+- 不預渲染與預渲染
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/no-pre-rendering'
+  alt='no-pre-rendering'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://nextjs.org/learn/basics/data-fetching/pre-rendering)
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/pre-rendering'
+  alt='pre-rendering'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://nextjs.org/learn/basics/data-fetching/pre-rendering)
+
+- 預渲染的兩種形式（兩者不同之處在於：何時生成頁面的 HTML）
+  - 伺服器端渲染：是在每個請求上生成 HTML 的預渲染方法。
+  - 靜態生成：在 build 時生成 HTML 的預渲染方法。預渲染的 HTML 會在每個請求中**重複使用**。
+
+Next.js 允許我們選擇每個頁面使用不同的預渲染模式。可以通過對大多數頁面使用靜態生成並對部分頁面使用伺服器端渲染來創建 “混合” Next.js 應用程序。
+
+## SSR（Server-Side Rendering）伺服器端渲染
+
+- SSR 伺服器端渲染是指每次瀏覽器發送請求時，伺服器才會產生 HTML 檔案然後丟回瀏覽器顯示。需要注意的是，這個渲染模式需要 server 一直處理使用者的請求。
+
+  <CloudinaryImg
+    mdx
+    publicId='boboncode/blogs/nextjs-rendering-pattern/server-side-rendering'
+    alt='server-side-rendering'
+    width={730}
+    height={450}
+  />
+  [Image copid from this !](https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f)
+
+- **step 1 :** 首先，在 client 端向 server 發送請求後，server 開始生成網頁（HTML 文檔）的新副本。
+- **step 2 :** 新生成的 HTML 與該頁面所需的最少 JavaScript 被一起送回瀏覽器。瀏覽器接收 HTML 後繪製（顯示）頁面。此時，user 可以看見整個頁面，但無法與網頁互動，這種狀態不會持續超過幾毫秒。
+- **step 3 :** 進行 hydration，瀏覽器從 server 下載 JavaScript，網頁才開始具有互動性。
+  > hydration 的意思是會在 client 端把 server side 先渲染出的 DOM element 加上事件監聽器等屬性，讓 DOM element 變為動態且具有互動性，能夠響應後續的資料變化。
+
+## SSG（Static Site Generation）靜態網站生成
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/static-generation'
+  alt='static-generation'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://nextjs.org/learn/basics/data-fetching/two-forms)
+
+「畫面渲染」和「資料拉取」都在 build time 是就都出來完，並變成「靜態檔案」，並不是在 sever 收到 request 後才開始動作。
+
+- 在 Build Time 時製作出一個擁有完整內容的靜態 HTML 檔案，這些 HTML 檔案可以放在 CDN 上被 cache，後續的使用者如果對同樣頁面發出請求，可以直接到 CDN 拿到完整的 HTML 檔案，有更好的 Time to First Byte（TTFB），網站效能較佳。(SSG 是 Next.js 提供的默認網頁生成策略，Next.js 官方建議採用此策略以獲得最佳性能結果。)
+- 當每次 User 進到頁面時，取得在 Build Time 已經在 Server 製作好的靜態檔案並 render，因此畫面一次到位。
+
+## ISR（Incremental Static Regeneration）增量靜態再生成 — SSG 擴展
+
+<CloudinaryImg
+  mdx
+  publicId='boboncode/blogs/nextjs-rendering-pattern/incremental-static-regeneration'
+  alt='incremental-static-regeneration'
+  width={730}
+  height={450}
+/>
+[Image copid from this !](https://vercel.com/docs/frameworks/nextjs/incremental-static-regeneration)
+
+ISR 很像 SSG，不過它解決了 SSG 不能在 run time 更新資料內容的問題，而且 HTML 檔案也會被 cache 在 CDN 上，減輕對伺服器的負擔(這部分比 SSR 好)，網站效能較佳。
+
+- 有些網站呈現的內容可能需要定期更新，例如新聞網站上的最新新聞、產品目錄中的特別優惠。傳統的 SSG 方法在生成靜態頁面後無法自動更新這些內容，需要重新構建整個網站，這對於有幾千個或更多頁面要改動的網站而言，會導致不必要的 loading 和等待時間。因此出現了新的架構想要來解決 SSG 的問題，ISR 就是其中一種。
+- 當每次 User 進到頁面時，取得已經製作好的靜態檔案並 render，畫面一次到位，而 ISR 允許我們在需要時、根據一定的時間間隔或事件觸發，對特定頁面進行部分更新，而不是等待整個網站的重新生成。
+- 在 ISR 情況下，第一次對頁面發出 request 時，會先回傳 fallback 的畫面給使用者，這個 fallback 頁面可能包含一些 placeholder 與 skeleton，在呈現 fallback 頁面時，同時也會去抓取需要的資料，等資料準備好後，完整的頁面可以被拿到 CDN 做快取，後續的使用者如果對同樣頁面發出請求，就可以直接到 CDN 拿取，就像使用 SSG 的時候一樣。
+- 在 Next.js 裡，可以設定幾秒要 re-validate 並更新頁面，在 re-validate 的期間，還沒有 Build 產生最新資料頁面之前，會先回傳先前被 cache 的版本，等到產生最新頁面之後才會更新 CDN 中的快取(這樣的快取策略被稱作 stale-while-revalidate)，user reload page 後可以看到更新後的頁面。如果重 Buld 畫面失敗，會顯示舊的頁面。
+
+## CSR、SSR、SSG、ISR 比較
+
+以下是上述四種渲染模式的比較：
+
+> Client-Side Rendering (CSR)
+
+- 優點：
+  - 減少 Server 端的壓力 — JavaScript 及 CSS 在第一次都已經發送到 Client 端，之後只需要向 Server 端取得相關頁面的 data 即可。
+  - 頁面切換速度快 — HTML 頁面都是 Client 端自己編譯的，所以頁面切換時不需要像 SSR 等待 Server 端回傳 HTML；而且網頁內容的改變通常都是局部的，這樣就避免了不必要的跳轉及重複渲染。
+- 缺點：
+  - 首次載畫面可能會有空白或閃爍 — 需要等待 JavaScript bundle 下載和執行。
+  - SEO 問題 — HTML 檔案只有容器，內容可由 JavaScript 動態產生，爬蟲在爬取資料時可能會爬到空的 tag。
+  - 效能問題 — 需要靠 JavaScript render 頁面，JavaScript 檔案較大，隨著專案擴充容易有效能問題。
+
+> Server-Side Rendering (SSR)
+
+- 優點：
+  - SEO 優化 — 搜索引擎可以輕鬆抓取和索引伺服器端生成的完整 HTML。
+  - 首頁渲染快 — 不需要下載一堆 JavaScript 及 CSS ，還要等待它們編譯後才看到頁面。
+- 缺點：
+  - Server 端承受比較大的壓力 — 由於頁面都是在 Server 端進行編譯，在需要處理大量並發請求或操作中會消耗相當大的資源。
+
+> Static Site Generation (SSG)
+
+- 優點：
+  - SEO 優化 — 在 Build Time 就在 Server 製作好具有完整資訊的 HTML 檔案，所以搜索引擎可以輕鬆抓取和索引。
+  - 快速載入 — 靜態頁面只需下載，無需伺服器端渲染或客戶端 JavaScript 執行。
+  - 安全性 — 靜態內容無法被攻擊者修改。
+- 缺點：
+  - 更新困難 — 資料在 build time 時就已經寫死，沒辦法動態更新，而對於需要頻繁更新的內容，需要重新編譯並部署整個網站。
+  - 打包時間較久 — Build Time 要做的事情比較多，打包時間比較久，且當頁面變的越來越多時，打包也會需要更長的時間。
+
+> Incremental Static Regeneration (ISR)
+
+- 優點：
+  - SEO 優化 — 與 SSG 一樣，ISR 也在 Build Time 就在 Server 製作好具有完整資訊的 HTML 檔案。
+  - 最新數據 — 可以根據一定時間間隔或事件觸發重新生成部分頁面，確保特定頁面上的內容始終是最新的，而不需要重新編譯整個網站。
+  - 快速載入 — 首次請求可立即返回已編譯的靜態內容。
+- 缺點：
+  - 資料不會立刻更新 — 需等待 re-validate 重新製作最新資料的頁面。
+  - 打包時間較久 — Build Time 要做的事情比較多，打包時間比較久，且當頁面變的越來越多時，打包也會需要更長的時間。
+
+## 不同渲染模式怎麼選擇？
+
+- CSR - 資料不斷變化，不需要 SEO => 內部管理系統（ERP 系統、訂單管理系統）
+- SSR - 資料頻繁更新，且頁面內容會根據每個請求更改，需要 SEO => 內容經常變化的電商網站
+- SSG - 資料幾乎不用更新，需要 SEO => 活動頁面、blog
+- ISR - 資料不太需要更新或是有太多頁面，需要 SEO => 商品頁
+
+---
+
+參考連結：
+
+- [NEXT.JS Pre — rendering and Data Fetching](https://nextjs.org/learn/basics/data-fetching)
+- [SSR-SSG-ISR-CSR in Next.js — The Ultimate Guide](https://medium.com/@idrazhar/ssr-ssg-isr-csr-in-next-js-the-ultimate-guide-9d1b90aa995e)
+- [[note] Rendering Pattern (feat Next.js)](https://pjchender.dev/react/note-react-rendering-pattern/)
+- [note - Understanding Next.js Data Fetching (CSR, SSR, SSG, ISR)](https://hackmd.io/aCjbg0QtQrqCYoe_wugfBw)
