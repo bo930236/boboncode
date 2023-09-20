@@ -27,7 +27,6 @@ class MyDocument extends Document {
             async
             src='https://boboncode-umami.vercel.app/script.js'
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ''}
-            data-domains='boboncode.com,vercel.com, vercel.app'
           />
         </Head>
         <body className='bg-white antialiased transition-colors dark:bg-dark dark:text-white'>
