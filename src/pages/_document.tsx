@@ -25,7 +25,7 @@ class MyDocument extends Document {
           />
           <script
             async
-            src='http://localhost:3000/script.js'
+            src='https://boboncode-umami.vercel.app/script.js'
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ''}
           />
         </Head>
