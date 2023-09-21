@@ -23,7 +23,7 @@ export default function SubscribeCard({
         {description ??
           "Don't miss out 😉. Get an email whenever I post, no spam."}
       </p>
-      <ButtonLink className='mt-2' href='https://boboncode.substack.com/m'>
+      <ButtonLink className='mt-2' href='https://bit.ly/boboncode-substack'>
         Subscribe Now
       </ButtonLink>
     </div>

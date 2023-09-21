@@ -97,7 +97,7 @@ export default function IndexPage({
               className='mt-4 flex flex-wrap gap-4 gap-y-2 md:mt-8'
             >
               <UnstyledLink
-                href='https://boboncode.link/cv'
+                href='https://bit.ly/boboncode-cv'
                 className={clsx(
                   'inline-flex items-center gap-1 text-sm font-medium md:text-base',
                   'text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white',
@@ -112,7 +112,7 @@ export default function IndexPage({
                 <span>Resume</span>
               </UnstyledLink>
               <UnstyledLink
-                href='https://twitter.com/boboncode'
+                href='https://bit.ly/boboncode-twitter'
                 className={clsx(
                   'inline-flex items-center gap-1 text-sm font-medium md:text-base',
                   'group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white',

@@ -80,7 +80,7 @@ function SocialLinks() {
             <div className='inline-block rounded-md border bg-white p-2 text-gray-600 shadow-md dark:border-gray-600 dark:bg-dark dark:text-gray-200'>
               {copyStatus === 'idle'
                 ? 'Click the mail logo to copy'
-                : 'Copied to clipboard 🥳'}
+                : 'Copied to clipboard 🐰'}
               <Accent className='inline-block font-medium'>
                 boboncode@gmail.com
               </Accent>
@@ -133,7 +133,7 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
       ),
     },
     {
-      href: 'https://boboncode-umami.vercel.app/share/z4PXJw83QcI879yV/BoboNcode',
+      href: 'https://bit.ly/boboncode-umami',
       text: 'Analytics',
       tooltip: 'BoboNCode views and visitors analytics',
     },
