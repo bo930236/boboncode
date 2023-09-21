@@ -107,7 +107,7 @@ Next.js 允許我們選擇每個頁面使用不同的預渲染模式。可以通
 />
 [Image copid from this !](https://nextjs.org/learn/basics/data-fetching/two-forms)
 
-「畫面渲染」和「資料拉取」都在 build time 是就都出來完，並變成「靜態檔案」，並不是在 sever 收到 request 後才開始動作。
+_「畫面渲染」和「資料拉取」都在 build time 是就都出來完，並變成「靜態檔案」，並不是在 sever 收到 request 後才開始動作。_
 
 - 在 Build Time 時製作出一個擁有完整內容的靜態 HTML 檔案，這些 HTML 檔案可以放在 CDN 上被 cache，後續的使用者如果對同樣頁面發出請求，可以直接到 CDN 拿到完整的 HTML 檔案，有更好的 Time to First Byte（TTFB），網站效能較佳。(SSG 是 Next.js 提供的默認網頁生成策略，Next.js 官方建議採用此策略以獲得最佳性能結果。)
 - 當每次 User 進到頁面時，取得在 Build Time 已經在 Server 製作好的靜態檔案並 render，因此畫面一次到位。
@@ -123,7 +123,7 @@ Next.js 允許我們選擇每個頁面使用不同的預渲染模式。可以通
 />
 [Image copid from this !](https://vercel.com/docs/frameworks/nextjs/incremental-static-regeneration)
 
-ISR 很像 SSG，不過它解決了 SSG 不能在 run time 更新資料內容的問題，而且 HTML 檔案也會被 cache 在 CDN 上，減輕對伺服器的負擔(這部分比 SSR 好)，網站效能較佳。
+_ISR 很像 SSG，不過它解決了 SSG 不能在 run time 更新資料內容的問題，而且 HTML 檔案也會被 cache 在 CDN 上，減輕對伺服器的負擔(這部分比 SSR 好)，網站效能較佳。_
 
 - 有些網站呈現的內容可能需要定期更新，例如新聞網站上的最新新聞、產品目錄中的特別優惠。傳統的 SSG 方法在生成靜態頁面後無法自動更新這些內容，需要重新構建整個網站，這對於有幾千個或更多頁面要改動的網站而言，會導致不必要的 loading 和等待時間。因此出現了新的架構想要來解決 SSG 的問題，ISR 就是其中一種。
 - 當每次 User 進到頁面時，取得已經製作好的靜態檔案並 render，畫面一次到位，而 ISR 允許我們在需要時、根據一定的時間間隔或事件觸發，對特定頁面進行部分更新，而不是等待整個網站的重新生成。
@@ -132,7 +132,7 @@ ISR 很像 SSG，不過它解決了 SSG 不能在 run time 更新資料內容的
 
 ## CSR、SSR、SSG、ISR 比較
 
-以下是上述四種渲染模式的比較：
+_以下是上述四種渲染模式的比較：_
 
 > Client-Side Rendering (CSR)
 
