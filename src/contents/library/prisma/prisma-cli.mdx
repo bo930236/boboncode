@@ -1,0 +1,15 @@
+---
+title: 'Prisma CLI'
+tags: 'prisma'
+description: 'note prisma cli'
+---
+
+## Database sync with prisma schema
+
+使用 npx prisma db push 命令成功後，你的應用程式已經與資料庫連接並確保數據庫模式與 Prisma schema 保持同步。
+
+```zsh
+npx prisma db push
+```
+
+若需要對 schema 進行更改，只需更新 Prisma schema，然後再次運行 `npx prisma db push` 以同步數據庫模式。
