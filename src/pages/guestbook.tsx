@@ -10,7 +10,7 @@ export default function GuestbookPage() {
     <Layout>
       <Seo
         templateTitle='Guestbook'
-        description='Leave whatever you like to say—message, appreciation, suggestions.'
+        description="Feel free to leave any message, expressions of appreciation, or suggestions you'd like to share."
       />
 
       <main>
@@ -20,7 +20,8 @@ export default function GuestbookPage() {
               <Accent>Guestbook</Accent>
             </h1>
             <p className='mt-2 text-gray-700 dark:text-gray-200'>
-              Leave whatever you like to say—message, appreciation, suggestions.
+              Feel free to leave any message, expressions of appreciation, or
+              suggestions you'd like to share.
             </p>
             <figure className='mt-12'>
               <Comment />

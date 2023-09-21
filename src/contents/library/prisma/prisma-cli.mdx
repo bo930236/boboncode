@@ -6,10 +6,22 @@ description: 'note prisma cli'
 
 ## Database sync with prisma schema
 
-使用 npx prisma db push 命令成功後，你的應用程式已經與資料庫連接並確保數據庫模式與 Prisma schema 保持同步。
+輸入以下命令後，應用程式已經與資料庫連接並確保數據庫模式與 Prisma schema 保持同步。
 
 ```zsh
 npx prisma db push
 ```
 
-若需要對 schema 進行更改，只需更新 Prisma schema，然後再次運行 `npx prisma db push` 以同步數據庫模式。
+連結成功會顯示：
+
+```zsh
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "railway", schema "public" at "containers-us-west-34.railway.app:6418"
+
+🚀  Your database is now in sync with your Prisma schema. Done in 6.14s
+
+✔ Generated Prisma Client (4.12.0 | library) to ./node_modules/@prisma/client in 109ms
+```
+
+若需要對 schema 進行更改，只需更新 Prisma schema，然後再次運行此命令，以同步數據庫模式。
