@@ -33,8 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // Don't increment views if not on main domain
     if (
       window.location.host !==
-        (process.env.NEXT_PUBLIC_BLOCK_DOMAIN_WHITELIST ||
-          'boboncode.vercel.app') &&
+        (process.env.NEXT_PUBLIC_BLOCK_DOMAIN_WHITELIST || 'vercel.app') &&
       blockDomainMeta
     ) {
       if (getFromLocalStorage('incrementMetaFlag') !== 'false') {
