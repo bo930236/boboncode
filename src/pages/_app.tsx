@@ -5,6 +5,7 @@ import { useRemoteRefresh } from 'next-remote-refresh/hook';
 import { ThemeProvider } from 'next-themes';
 import nProgress from 'nprogress';
 import * as React from 'react';
+import { useCallback } from 'react';
 import { SWRConfig } from 'swr';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
@@ -22,6 +23,12 @@ Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
 
 function MyApp({ Component, pageProps }: AppProps) {
+  // Google Analytics tracking code
+  const handleRouteChange = useCallback((url: string) => {
+    window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS as string, {
+      page_path: url,
+    });
+  }, []);
   React.useEffect(() => {
     // Don't increment views if not on main domain
     if (
@@ -36,7 +43,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         window.location.reload();
       }
     }
-  }, []);
+    // Set up event listener for route change
+    Router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      // Clean up event listener
+      Router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [handleRouteChange]);
 
   useRemoteRefresh();
 
