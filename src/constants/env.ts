@@ -1,6 +1,6 @@
 import { getFromLocalStorage } from '@/lib/helper.client';
 
-export const isProd = process.env.NODE_ENV === 'production';
+export const isProd = process.env.ISPROD === 'production';
 
 /**
  * Show command service on contents
@@ -15,14 +15,12 @@ export const commentFlag =
  */
 export const contentMetaFlag =
   isProd || process.env.NEXT_PUBLIC_FLAG_CONTENT_META === 'true';
-
 /**
  * Increment content views
  * @see useContentMeta.tsx
  */
 export const incrementMetaFlag =
   isProd && getFromLocalStorage('incrementMetaFlag') !== 'false';
-
 /**
  * Open API access to newsletter provider (subscribe and view count)
  * @see SubscribeCard.tsx

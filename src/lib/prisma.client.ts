@@ -12,4 +12,4 @@ export const prismaClient =
     // log: ['query'],
   });
 
-if (process.env.NODE_ENV !== 'production') global.prisma = prismaClient;
+if (process.env.ISPROD !== 'production') global.prisma = prismaClient;
