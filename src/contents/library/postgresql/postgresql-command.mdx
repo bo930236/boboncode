@@ -1,0 +1,19 @@
+---
+title: 'PostgreSQL Command'
+tags: 'postgresql'
+description: 'note | resetting the starting value of an id (postgresql)'
+---
+
+## Resetting the starting value of an ID
+
+要重新設定 id 的起始值，可以使用 PostgreSQL 中的 `ALTER SEQUENCE`。  
+這是用來修改序列（sequence）的屬性，假設我們需要對 ContentMeta 表的 id 序列進行重新整理。
+
+執行以下 SQL 命令，將 ContentMeta 表的 id 序列起始值設定為 1：
+
+```sql
+ALTER SEQUENCE content_meta_id_seq RESTART WITH 1;
+```
+
+content_meta_id_seq 是 PostgreSQL 自動創建的序列名稱，用來管理 ContentMeta 表的 id 列。  
+執行完命令，下一次插入新記錄時，id 會從 1 開始增加。

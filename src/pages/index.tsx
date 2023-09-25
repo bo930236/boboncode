@@ -350,6 +350,8 @@ export async function getStaticProps() {
   const featuredProjects = getFeatured(projects, ['sideproject']);
   const featuredShorts = getFeatured(shorts, [
     'mac/iterm2-ohmyzsh-configurations',
+    'postgresql/postgresql-command',
+    'prisma/prisma-cli',
   ]);
   const introPosts = getFeatured(blogs, ['ch-nextjs-rendering-pattern']);
 
