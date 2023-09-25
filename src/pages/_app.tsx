@@ -41,6 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         window.location.reload();
       }
     }
+    localStorage.setItem('incrementMetaFlag', 'true');
     // Set up event listener for route change
     Router.events.on('routeChangeComplete', handleRouteChange);
 
