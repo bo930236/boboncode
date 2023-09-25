@@ -16,7 +16,7 @@ import '@/styles/nprogress.css';
 
 import { getFromLocalStorage } from '@/lib/helper.client';
 
-import { blockDomainMeta } from '@/constants/env';
+// import { blockDomainMeta } from '@/constants/env';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
@@ -33,8 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // Don't increment views if not on main domain
     if (
       window.location.host !==
-        (process.env.NEXT_PUBLIC_BLOCK_DOMAIN_WHITELIST || 'vercel.app') &&
-      blockDomainMeta
+      (process.env.NEXT_PUBLIC_BLOCK_DOMAIN_WHITELIST || 'vercel.app')
     ) {
       if (getFromLocalStorage('incrementMetaFlag') !== 'false') {
         localStorage.setItem('incrementMetaFlag', 'false');

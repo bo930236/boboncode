@@ -23,7 +23,6 @@ export const contentMetaFlag =
 export const incrementMetaFlag =
   isProd && getFromLocalStorage('incrementMetaFlag') !== 'false';
 
-
 /**
  * Open API access to newsletter provider (subscribe and view count)
  * @see SubscribeCard.tsx
@@ -38,9 +37,9 @@ export const newsletterFlag =
 export const feedbackFlag =
   isProd || process.env.NEXT_PUBLIC_FLAG_FEEDBACK === 'true';
 
-/**
- * Only increase count when in specified domain meta
- * @see _app.tsx
- */
-export const blockDomainMeta =
-  isProd || process.env.NEXT_PUBLIC_META_BLOCK_DOMAIN === 'true';
+// /**
+//  * Only increase count when in specified domain meta
+//  * @see _app.tsx
+//  */
+// export const blockDomainMeta =
+//   isProd || process.env.NEXT_PUBLIC_META_BLOCK_DOMAIN === 'true';
