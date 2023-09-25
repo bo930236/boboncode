@@ -1,6 +1,6 @@
 import { getFromLocalStorage } from '@/lib/helper.client';
 
-export const isProd = process.env.ISPROD === 'production';
+export const isProd = true;
 
 /**
  * Show command service on contents
@@ -8,7 +8,6 @@ export const isProd = process.env.ISPROD === 'production';
  */
 export const commentFlag =
   isProd || process.env.NEXT_PUBLIC_FLAG_COMMENT === 'true';
-
 /**
  * Get content meta from the database
  * @see useContentMeta.tsx
