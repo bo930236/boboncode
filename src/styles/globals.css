@@ -5,15 +5,15 @@
 :root {
   /* Customize these variable */
   /* https://github.com/adamwathan/tailwind-css-variable-text-opacity-demo */
-  --tw-clr-primary-200: 219 255 0;
-  --tw-clr-primary-300: 103 2324 249;
-  --tw-clr-primary-400: 56 189 248;
-  --tw-clr-primary-500: 2 132 199;
+  --tw-clr-primary-200: 100 225 252;
+  --tw-clr-primary-300: 139 221 249;
+  --tw-clr-primary-400: 55 185 259;
+  --tw-clr-primary-500: 1 128 200;
 
-  --clr-primary-200: rgb(var(--tw-clr-primary-200)); /* #DBFF00 */
-  --clr-primary-300: rgb(var(--tw-clr-primary-300)); /* #67e8f9 #00e887 */
-  --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #38bdf8 #00e0f3 */
-  --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #0284c7 #00c4fd */
+  --clr-primary-200: rgb(var(--tw-clr-primary-200)); /* #64e1fc*/
+  --clr-primary-300: rgb(var(--tw-clr-primary-300)); /* #8BDDF9 */
+  --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #37b9f9*/
+  --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #0180c8*/
 }
 
 @layer base {
@@ -99,7 +99,7 @@
 @layer utilities {
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(to right, var(--clr-primary-300), var(--clr-primary-400));
+      linear-gradient(to right, var(--clr-primary-400), var(--clr-primary-500));
     background-size: 100% 2px, 0 2px;
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
