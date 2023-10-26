@@ -25,16 +25,16 @@ export default function TC(props: React.ComponentPropsWithoutRef<'svg'>) {
           gradientUnits='userSpaceOnUse'
         >
           <stop
-            className='text-primary-400 dark:text-primary-400'
+            className='text-primary-400 dark:text-primary-500'
             stopColor='currentColor'
           />
           <stop
-            className='text-primary-300 dark:text-primary-300'
+            className='text-primary-300 dark:text-primary-400'
             offset='0.5'
             stopColor='currentColor'
           />
           <stop
-            className='text-primary-300 dark:text-primary-200'
+            className='text-primary-300 dark:text-primary-300'
             offset='1'
             stopColor='currentColor'
           />
