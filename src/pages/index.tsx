@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { InferGetStaticPropsType } from 'next';
+import Image from 'next/image';
 import * as React from 'react';
 import { IoArrowDownOutline } from 'react-icons/io5';
 import { IoNewspaperSharp } from 'react-icons/io5';
@@ -49,10 +50,17 @@ export default function IndexPage({
         >
           <article className='layout'>
             <h2 className='text-2xl md:text-4xl 2xl:text-5xl' data-fade='1'>
-              Hi!
+              Hi{' '}
+              <Image
+                src='/../../images/Hi.gif'
+                width={32}
+                height={32}
+                alt='Hi'
+                unoptimized={true}
+              />
             </h2>
             <h1
-              className='mt-1 text-3xl md:text-5xl 2xl:text-6xl'
+              className='mt-1 animate-typing overflow-hidden whitespace-nowrap text-3xl md:text-5xl 2xl:text-6xl'
               data-fade='2'
             >
               This is <Accent>BoboNCode</Accent> and you can call me{' '}

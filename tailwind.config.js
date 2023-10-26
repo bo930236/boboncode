@@ -43,10 +43,22 @@ module.exports = {
             transform: 'rotate(-0.5deg)',
           },
         },
+        typing: {
+          '0%': {
+            width: '0',
+          },
+          '80%': {
+            width: '34ch',
+          },
+          '100%': {
+            width: '34ch',
+          },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         tilt: 'tilt 10s infinite linear',
+        typing: 'typing 5s infinite steps(34)',
       },
     },
   },
