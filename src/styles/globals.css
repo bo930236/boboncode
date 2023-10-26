@@ -232,3 +232,11 @@
   animation: emoji-animation 0.7s cubic-bezier(0.33, 1, 0.68, 1);
 }
 /* #endregion /**======== Like Button Animation =========== */
+
+@media (max-width: 1280px) {
+  .removeTypingAnimation {
+    overflow: inherit;
+    white-space: inherit;
+    animation: none;
+  }
+}

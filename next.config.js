@@ -12,7 +12,7 @@ const nextConfig = {
     dirs: ['src'],
   },
   images: {
-    domains: ['res.cloudinary.com', 'github.com'],
+    domains: ['res.cloudinary.com'],
   },
   async redirects() {
     return [

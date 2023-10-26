@@ -60,7 +60,10 @@ export default function IndexPage({
               />
             </h2>
             <h1
-              className='mt-1 animate-typing overflow-hidden whitespace-nowrap text-3xl md:text-5xl 2xl:text-6xl'
+              className={clsx(
+                'removeTypingAnimation',
+                'mt-1 animate-typing overflow-hidden whitespace-nowrap text-3xl md:text-5xl 2xl:text-6xl'
+              )}
               data-fade='2'
             >
               This is <Accent>BoboNCode</Accent> and you can call me{' '}
