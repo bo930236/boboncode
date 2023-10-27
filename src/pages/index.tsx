@@ -159,10 +159,10 @@ export default function IndexPage({
           </UnstyledLink>
           <TC
             className={clsx(
-              'absolute bottom-0 right-6',
-              'translate-y-[37%] transform-gpu',
-              'w-[calc(100%-3rem)] md:w-[600px] 2xl:w-[900px]',
-              'z-[-1] opacity-70 dark:opacity-30'
+              'absolute bottom-0 right-8',
+              'w-[calc(100%-7.5rem)] translate-y-[35%] transform-gpu',
+              'md:w-[600px] md:translate-y-[28%] lg:translate-y-[26%] 2xl:w-[800px]',
+              'z-[-1] opacity-40 dark:opacity-20'
             )}
           />
         </section>
