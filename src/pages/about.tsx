@@ -28,20 +28,19 @@ export default function AboutPage() {
             </h1>
             <div className='mt-4' data-fade='2'>
               <CloudinaryImg
-                className='float-right ml-6 w-40 md:w-72'
-                publicId='boboncode/about/self-3-cropped_cyfuvn.jpg'
-                width='1500'
-                height='1695'
+                className='float-right ml-6 w-40 rounded-full md:w-72'
+                publicId='boboncode/about/avatar_me.png'
+                width='800'
+                height='800'
                 alt='Photo of me'
                 preview={false}
               />
               <article className='prose dark:prose-invert'>
                 <p data-fade='3'>
                   Hello! I'm Bobo Tsai. I started learning web development in
-                  August 2022, which is the start of the pandemic. I have
-                  nothing much to do so I decided to learn web development from
-                  a udemy course to explore more about web development
-                  especially frontend development.
+                  August 2022. I decided to learn web development from a udemy
+                  course to explore more about web development especially
+                  frontend development.
                 </p>
                 <p data-fade='4'>
                   There are a lot of things and technologies to learn in
