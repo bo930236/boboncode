@@ -117,7 +117,7 @@ export async function getRecommendations(currSlug: string) {
 
   // Remove currentFm and traditionalChinese Posts, then randomize order
   const otherFms = frontmatters
-    .filter((fm) => !fm.slug.startsWith('id-') && fm.slug !== currSlug)
+    .filter((fm) => !fm.slug.startsWith('ch-') && fm.slug !== currSlug)
     .sort(() => Math.random() - 0.5);
 
   // Find with similar tags

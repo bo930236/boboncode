@@ -12,6 +12,7 @@ export default function useScrollSpy() {
     const sections = document.getElementsByClassName('hash-anchor');
 
     let prevBBox = null;
+
     let currentSectionId = activeSection;
 
     for (let i = 0; i < sections.length; ++i) {
@@ -21,6 +22,10 @@ export default function useScrollSpy() {
         currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null;
       }
 
+      if (currentSectionId && currentSectionId.includes('%')) {
+        currentSectionId = decodeURIComponent(currentSectionId);
+      }
+
       const bbox = section.getBoundingClientRect();
       const prevHeight = prevBBox ? bbox.top - prevBBox.bottom : 0;
       const offset = Math.max(200, prevHeight / 4);
@@ -28,7 +33,6 @@ export default function useScrollSpy() {
       // GetBoundingClientRect returns values relative to viewport
       if (bbox.top - offset < 0) {
         currentSectionId = section.getAttribute('href')?.split('#')[1] ?? null;
-
         prevBBox = bbox;
         continue;
       }

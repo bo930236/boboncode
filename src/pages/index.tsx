@@ -350,14 +350,20 @@ export async function getStaticProps() {
   const projects = await getAllFilesFrontmatter('projects');
   const shorts = await getAllFilesFrontmatter('library');
 
-  const featuredPosts = getFeatured(blogs, ['nextjs-rendering-pattern']);
+  const featuredPosts = getFeatured(blogs, [
+    'nextjs-rendering-pattern',
+    'react-router-v6',
+  ]);
   const featuredProjects = getFeatured(projects, ['sideproject']);
   const featuredShorts = getFeatured(shorts, [
     'mac/iterm2-ohmyzsh-configurations',
     'postgresql/postgresql-command',
     'prisma/prisma-cli',
   ]);
-  const introPosts = getFeatured(blogs, ['ch-nextjs-rendering-pattern']);
+  const introPosts = getFeatured(blogs, [
+    'ch-nextjs-rendering-pattern',
+    'ch-react-router-v6',
+  ]);
 
   return {
     props: {
