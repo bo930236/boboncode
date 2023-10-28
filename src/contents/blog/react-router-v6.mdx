@@ -11,36 +11,36 @@ tags: 'react'
 
 ### BrowserRouter
 
-- The most commonly used routing method.
-- Allows the current location to be stored in the browser's address bar using the URL.
-- Can use the browser's built-in history to stack and implement forward or backward navigation.
+- The `BrowserRouter` is the most commonly used routing method in React Router v6.
+- It stores the current location in the browser's address bar using the URL.
+- It leverages the browser's built-in history for navigation.
 
 ### HashRouter
 
-- Uses the URL's hash as the route.
-- Does not store routes in the browser's address bar, but in the hash portion of the URL.
-  (Note: The official documentation strongly advises against using this and should only be used in special cases, for example, when the URL should not be sent to a server for hosting.)
+- The `HashRouter` uses the URL's hash for routing.
+- It doesn't expose routes in the address bar but stores them in the hash part of the URL.
+  (Note: It's recommended for special cases where the URL should not be sent to a server.)
 
 ### MemoryRouter
 
-- An invisible router that does not store routes in the browser's address bar.
-- Stores the route stack in internal memory.
-- Very useful for testing environments.
+- The `MemoryRouter` is an invisible router that doesn't affect the browser's address bar.
+- It stores the route stack in internal memory and is useful for testing environments.
 
-## Using React Router v6
+## Setting Up React Router v6
 
 ### Installation
 
-Create a Vite project and install the react-router-dom package.
+Begin by creating a Vite project and installing the `react-router-dom` package:
 
 ```bash
 npm install react-router-dom
+# or
 yarn add react-router-dom
 ```
 
 ### Creating a Router
 
-Create a BrowserRouter router. Here, we use main.jsx as the entry point and wrap the BrowserRouter around the outermost layer of the App component.
+To set up a router, create a `BrowserRouter`. In this example, we wrap the `BrowserRouter` around the App component in `main.jsx`:
 
 ```jsx title="main.jsx"
 import ReactDOM from 'react-dom/client';
@@ -55,7 +55,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 ```
 
-In App.jsx, we use Routes and Route components to define two different routes, and each route can specify which component to render.
+In the `App.jsx` file, use `Routes` and `Route` components to define different routes and their associated components.
 
 ```jsx title="App.jsx"
 import { Route, Routes } from 'react-router-dom';
@@ -68,6 +68,148 @@ export default function App() {
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
     </Routes>
+  );
+}
+```
+
+## Common Router Components
+
+### Link: Creating Hyperlinks
+
+The `Link` component is used to create hyperlinks that enable users to navigate to other routes by clicking the link. The `to` attribute specifies the route to navigate to.
+
+```jsx
+import { Link } from 'react-router-dom';
+
+<Link to='/about'>About</Link>;
+```
+
+### NavLink: Specialized Link
+
+`NavLink` is a specialized `<Link>` with parameters. It functions like `<Link>` but automatically includes the `isActive` parameter in its `className`, allowing you to apply styles based on its state.
+
+```jsx
+import { NavLink } from 'react-router-dom';
+
+<NavLink to='/about' className={({ isActive }) => (isActive ? 'red' : 'blue')}>
+  About
+</NavLink>;
+```
+
+### Navigate: Redirecting Routes
+
+`Navigate` is used to replace the current route with a new one, optionally using the `replace` attribute. For instance, you can redirect users to the home page if they enter a non-existent route.
+
+```jsx
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Home from './screens/Home.jsx';
+import About from './screens/About.jsx';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='*' element={<Navigate to={'/'} replace />} />
+    </Routes>
+  );
+}
+```
+
+## Common Router Hooks
+
+### useNavigate: Simplified Navigation
+
+The `useNavigate` hook simplifies navigation to other routes and allows you to use numerical parameters to go back or forward.
+
+```jsx
+import { useNavigate } from 'react-router-dom';
+export default function About() {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <h1>All about me.</h1>
+      <button onClick={() => navigate('/')}>Home</button>
+      <button onClick={() => navigate(1)}>forward</button>
+      <button onClick={() => navigate(-1)}>back</button>
+    </div>
+  );
+}
+```
+
+### useLocation: Tracking Current Route
+
+`useLocation` provides the current route location, including path, search parameters, hash, and state. It's useful for performing side effects when the current location changes.
+
+```jsx
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+export default function About() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Perform actions when the location changes
+  }, [location]);
+  return (
+    // ...
+  );
+}
+```
+
+### useParams: Retrieving Route Parameters
+
+When passing parameters in the route, use `useParams` to retrieve them. Ensure that the `Route` component specifies the parameter names.
+
+```jsx title="App.jsx"
+import { Route, Routes } from 'react-router-dom';
+import Home from './screens/Home.jsx';
+import About from './screens/About.jsx';
+import Profile from './screens/Profile.jsx';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about/:id' element={<About />} />
+      <Route path='/profile/:id' element={<Profile />} />
+    </Routes>
+  );
+}
+```
+
+```jsx title="Profile.jsx"
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+export default function Profile() {
+  const { id } = useParams();
+  return (
+    <div>
+      <h1>Profile {id}</h1>
+    </div>
+  );
+}
+```
+
+### useSearchParams: Retrieving URL Parameters
+
+To extract URL parameters, use `useSearchParams`. For example, if the URL is `http://localhost:5173/profile/1?name=John`, you can use `useSearchParams` to get the name parameter.
+
+```jsx title="Profile.jsx"
+import React from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+
+export default function Profile() {
+  const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get('name');
+
+  return (
+    <div>
+      <h1>Profile {id}</h1>
+      {name && <p>Name: {name}</p>}
+    </div>
   );
 }
 ```

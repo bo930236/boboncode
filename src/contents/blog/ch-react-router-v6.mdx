@@ -7,7 +7,7 @@ banner: 'react-router-v6'
 tags: 'react'
 ---
 
-## React Router DOM 不同路由器
+## 了解不同的路由器類型
 
 ### BrowserRouter
 
@@ -27,7 +27,7 @@ tags: 'react'
 - 將路由堆疊存在內部記憶體中。
 - 對於測試環境非常有用。
 
-## 使用 React Router v6
+## 設定 React Router v6
 
 ### 安裝
 
@@ -74,7 +74,7 @@ export default function App() {
 
 ## 常用路由器元件
 
-### Link
+### Link：建立一般超連結
 
 `Link` 用來建立超連結，讓使用者可以透過點擊連結導航到其他路由。  
 `to` 屬性：指定要導航到的路由。
@@ -85,7 +85,7 @@ import { Link } from 'react-router-dom';
 <Link to='/about'>About</Link>;
 ```
 
-### NavLink
+### NavLink：自帶參數超連結
 
 `NavLink` 是帶有參數的特殊 `<Link>`，因此用法與 `<Link>` 相同，差別在於它的 `className` 會自帶 `isActive` 參數，我們可以透過判斷參數來設定樣式。
 
@@ -97,7 +97,7 @@ import { NavLink } from 'react-router-dom';
 </NavLink>;
 ```
 
-### Navigate
+### Navigate：重新導向路由
 
 `Navigate` 可以透過 `replace` 屬性取代目前的路由，做到重新導向。  
 下面示範當使用者輸入不存在的路由時，將會重新導向到首頁。  
@@ -121,7 +121,7 @@ export default function App() {
 
 ## 常用路由器 hook
 
-### useNavigate
+### useNavigate：導航
 
 `useNavigate` 可以輕鬆跳轉到其他路由，並且可以使用數字參數來回到上一頁或下一頁。
 
@@ -140,20 +140,19 @@ export default function About() {
 }
 ```
 
-### useLocation
+### useLocation：追蹤目前路由位置
 
-`useLocation` 會回傳目前的路由位置，包含路由的路徑、搜尋參數、hash、state 等，當我們想在當前位置更改時執行一些副作用，可以搭配 `useEffect` 來監聽路由。
+`useLocation` 會回傳目前的路由位置，包含路由的路徑、搜尋參數、hash、state 等，當我們想在目前的路由位置更改時執行一些副作用，可以搭配 `useEffect` 來監聽路由。
 
 ```jsx
-import * as React from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function About() {
-  const [pageSize, setPageSize] = useState(10);
   const location = useLocation();
 
   useEffect(() => {
-    setPageSize(10);
+    // Perform actions when the location changes
   }, [location]);
   return (
     // ...
@@ -161,7 +160,7 @@ export default function About() {
 }
 ```
 
-### useParams
+### useParams：取得路由參數
 
 假設我們要在路由中傳遞參數，可以使用 `useParams` 來取得參數，但是 `Route` 元件必須要先設置好要取得的參數名字，才能透過 `useParams` 取得。
 
@@ -169,6 +168,7 @@ export default function About() {
 import { Route, Routes } from 'react-router-dom';
 import Home from './screens/Home.jsx';
 import About from './screens/About.jsx';
+import Profile from './screens/Profile.jsx';
 
 export default function App() {
   return (
@@ -195,26 +195,24 @@ export default function Profile() {
 }
 ```
 
-### useSearchParams
+### useSearchParams：取得 URL 參數
 
 網址內若帶有參數，可以使用 `useSearchParams` 來取得參數。  
 假設網址是: `http://localhost:5173/profile/1?name=John`，我們可以透過 `useSearchParams` 取得 `name` 參數。
 
 ```jsx title="Profile.jsx"
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 export default function Profile() {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
   const name = searchParams.get('name');
-  const age = searchParams.get('age');
 
   return (
     <div>
       <h1>Profile {id}</h1>
-      <h2>Hello {name}</h2>
+      {name && <p>Name: {name}</p>}
     </div>
   );
 }
