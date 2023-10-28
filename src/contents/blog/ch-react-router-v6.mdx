@@ -1,19 +1,221 @@
 ---
-title: 'React Router V6'
+title: 'React Router v6'
 publishedAt: '2023-05-05'
 lastUpdated: '2023-09-20'
-description: '了解 React Router V6 的用法、特性'
-banner: 'nextjs-rendering-pattern'
+description: '了解 React Router v6'
+banner: 'react-router-v6'
 tags: 'react'
 ---
 
-<CloudinaryImg
-  mdx
-  publicId='boboncode/blogs/nextjs-rendering-pattern/next.js-page-rendering_prnsjr'
-  alt='next.js-page-rendering'
-  width={730}
-  height={900}
-/>
-[Image copid from this !](https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/)
+## React Router DOM 不同路由器
 
-## Web 性能指標
+### BrowserRouter
+
+- 最常使用的路由方式。
+- 允許使用 URL 將目前的位置存儲在瀏覽器網址列中。
+- 可以使用瀏覽器內建歷史紀錄進行堆疊，實現前進或後退導航。
+
+### HashRouter
+
+- 使用 URL 的 hash 作為路由。
+- 不將路由存在瀏覽器網址列中，而是存在 URL 的 hash 部分。  
+  _(注意：官方文件強烈建議不要使用，只有在特殊情況下，ex: URL 不應該發送到伺服器託管時才應使用。)_
+
+### MemoryRouter
+
+- 不可見的路由器，不將路由存在瀏覽器網址列中。
+- 將路由堆疊存在內部記憶體中。
+- 對於測試環境非常有用。
+
+## 使用 React Router v6
+
+### 安裝
+
+建立一個 vite 專案，並安裝 `react-router-dom` 套件。
+
+```bash
+npm install react-router-dom
+yarn add react-router-dom
+```
+
+### 建立路由器
+
+建立 `BrowserRouter` 路由器，這裡以 `main.jsx` 作為入口點，並將 `BrowserRouter` 包在 App 元件的最外層。
+
+```jsx title="main.jsx"
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App /> {/* The rest of your app goes here */}
+  </BrowserRouter>
+);
+```
+
+在 `App.jsx` 中，我們使用了 `Routes` 和 `Route` 元件來定義兩個不同的路由，每個路由可以指定要渲染的元件。
+
+```jsx title="App.jsx"
+import { Route, Routes } from 'react-router-dom';
+import Home from './screens/Home.jsx';
+import About from './screens/About.jsx';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+    </Routes>
+  );
+}
+```
+
+## 常用路由器元件
+
+### Link
+
+`Link` 用來建立超連結，讓使用者可以透過點擊連結導航到其他路由。  
+`to` 屬性：指定要導航到的路由。
+
+```jsx
+import { Link } from 'react-router-dom';
+
+<Link to='/about'>About</Link>;
+```
+
+### NavLink
+
+`NavLink` 是帶有參數的特殊 `<Link>`，因此用法與 `<Link>` 相同，差別在於它的 `className` 會自帶 `isActive` 參數，我們可以透過判斷參數來設定樣式。
+
+```jsx
+import { NavLink } from 'react-router-dom';
+
+<NavLink to='/about' className={({ isActive }) => (isActive ? 'red' : 'blue')}>
+  About
+</NavLink>;
+```
+
+### Navigate
+
+`Navigate` 可以透過 `replace` 屬性取代目前的路由，做到重新導向。  
+下面示範當使用者輸入不存在的路由時，將會重新導向到首頁。  
+(在 `path` 加上 `*`，意思就是 `Routes` 底下的路由都匹配不到時，才會去匹配該 `path`。)
+
+```jsx
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Home from './screens/Home.jsx';
+import About from './screens/About.jsx';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+      <Route path='*' element={<Navigate to={'/'} replace />} />
+    </Routes>
+  );
+}
+```
+
+## 常用路由器 hook
+
+### useNavigate
+
+`useNavigate` 可以輕鬆跳轉到其他路由，並且可以使用數字參數來回到上一頁或下一頁。
+
+```jsx
+import { useNavigate } from 'react-router-dom';
+export default function About() {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <h1>All about me.</h1>
+      <button onClick={() => navigate('/')}>Home</button>
+      <button onClick={() => navigate(1)}>forward</button>
+      <button onClick={() => navigate(-1)}>back</button>
+    </div>
+  );
+}
+```
+
+### useLocation
+
+`useLocation` 會回傳目前的路由位置，包含路由的路徑、搜尋參數、hash、state 等，當我們想在當前位置更改時執行一些副作用，可以搭配 `useEffect` 來監聽路由。
+
+```jsx
+import * as React from 'react';
+import { useLocation } from 'react-router-dom';
+
+export default function About() {
+  const [pageSize, setPageSize] = useState(10);
+  const location = useLocation();
+
+  useEffect(() => {
+    setPageSize(10);
+  }, [location]);
+  return (
+    // ...
+  );
+}
+```
+
+### useParams
+
+假設我們要在路由中傳遞參數，可以使用 `useParams` 來取得參數，但是 `Route` 元件必須要先設置好要取得的參數名字，才能透過 `useParams` 取得。
+
+```jsx title="App.jsx"
+import { Route, Routes } from 'react-router-dom';
+import Home from './screens/Home.jsx';
+import About from './screens/About.jsx';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about/:id' element={<About />} />
+      <Route path='/profile/:id' element={<Profile />} />
+    </Routes>
+  );
+}
+```
+
+```jsx title="Profile.jsx"
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+export default function Profile() {
+  const { id } = useParams();
+  return (
+    <div>
+      <h1>Profile {id}</h1>
+    </div>
+  );
+}
+```
+
+### useSearchParams
+
+網址內若帶有參數，可以使用 `useSearchParams` 來取得參數。  
+假設網址是: `http://localhost:5173/profile/1?name=John`，我們可以透過 `useSearchParams` 取得 `name` 參數。
+
+```jsx title="Profile.jsx"
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+
+export default function Profile() {
+  const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get('name');
+  const age = searchParams.get('age');
+
+  return (
+    <div>
+      <h1>Profile {id}</h1>
+      <h2>Hello {name}</h2>
+    </div>
+  );
+}
+```

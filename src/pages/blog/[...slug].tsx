@@ -109,7 +109,7 @@ export default function SingleBlogPage({
             <div className='pb-4 dark:border-gray-600'>
               <CloudinaryImg
                 publicId={`boboncode/banner/${frontmatter.banner}`}
-                alt={`Photo from unsplash: ${frontmatter.banner}`}
+                alt={`Photo from pixabay: ${frontmatter.banner}`}
                 width={1200}
                 height={(1200 * 2) / 5}
                 aspect={{ height: 2, width: 5 }}

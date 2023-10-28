@@ -1,19 +1,73 @@
 ---
-title: 'React Router V6'
+title: 'React Router v6'
 publishedAt: '2023-05-05'
 lastUpdated: '2023-09-20'
-description: 'Learn about React Router V6'
-banner: 'nextjs-rendering-pattern'
+description: 'Learn about React Router v6'
+banner: 'react-router-v6'
 tags: 'react'
 ---
 
-<CloudinaryImg
-  mdx
-  publicId='boboncode/blogs/nextjs-rendering-pattern/next.js-page-rendering_prnsjr'
-  alt='next.js-page-rendering'
-  width={730}
-  height={900}
-/>
-[Image copid from this !](https://guydumais.digital/blog/next-js-the-ultimate-cheat-sheet-to-page-rendering/)
+## React Router DOM Different Routers
 
-##
+### BrowserRouter
+
+- The most commonly used routing method.
+- Allows the current location to be stored in the browser's address bar using the URL.
+- Can use the browser's built-in history to stack and implement forward or backward navigation.
+
+### HashRouter
+
+- Uses the URL's hash as the route.
+- Does not store routes in the browser's address bar, but in the hash portion of the URL.
+  (Note: The official documentation strongly advises against using this and should only be used in special cases, for example, when the URL should not be sent to a server for hosting.)
+
+### MemoryRouter
+
+- An invisible router that does not store routes in the browser's address bar.
+- Stores the route stack in internal memory.
+- Very useful for testing environments.
+
+## Using React Router v6
+
+### Installation
+
+Create a Vite project and install the react-router-dom package.
+
+```bash
+npm install react-router-dom
+yarn add react-router-dom
+```
+
+### Creating a Router
+
+Create a BrowserRouter router. Here, we use main.jsx as the entry point and wrap the BrowserRouter around the outermost layer of the App component.
+
+```jsx title="main.jsx"
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <App /> {/* The rest of your app goes here */}
+  </BrowserRouter>
+);
+```
+
+In App.jsx, we use Routes and Route components to define two different routes, and each route can specify which component to render.
+
+```jsx title="App.jsx"
+import { Route, Routes } from 'react-router-dom';
+import Home from './screens/Home.jsx';
+import About from './screens/About.jsx';
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about' element={<About />} />
+    </Routes>
+  );
+}
+```

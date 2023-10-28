@@ -43,7 +43,7 @@ export default function BlogCard({
               noStyle
               className='pointer-events-none overflow-hidden rounded-t-md'
               publicId={`boboncode/banner/${post.banner}`}
-              alt='Photo taken from unsplash'
+              alt='Photo taken from pixabay'
               width={1200}
               height={(1200 * 2) / 5}
               aspect={{ height: 2, width: 5 }}
