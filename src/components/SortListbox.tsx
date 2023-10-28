@@ -30,7 +30,7 @@ export default function SortListbox({
               'w-full rounded-md bg-white py-2 pl-3 pr-10 text-left font-medium dark:bg-dark sm:text-sm',
               'focus:outline-none focus-visible:ring focus-visible:ring-primary-300',
               'border border-gray-300 dark:border-gray-600',
-              'scale-100 transform-gpu hover:scale-[1.03] active:scale-[0.97]',
+              'scale-100 transform-gpu hover:scale-[1.05] active:scale-[0.95]',
               'transition duration-100',
               'animate-shadow'
             )}

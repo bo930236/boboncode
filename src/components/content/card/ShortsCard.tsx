@@ -24,7 +24,7 @@ export default function ShortsCard({
       className={clsx([
         'ring-vis-0 h-full rounded-md bg-white dark:bg-dark',
         'border dark:border-gray-600',
-        'scale-100 hover:scale-[1.04] active:scale-[0.97] motion-safe:transform-gpu',
+        'scale-100 hover:scale-[1.05] active:scale-[0.95] motion-safe:transform-gpu',
         'transition duration-100',
         'motion-reduce:hover:scale-100',
         'animate-shadow',

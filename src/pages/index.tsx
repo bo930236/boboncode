@@ -361,8 +361,8 @@ export async function getStaticProps() {
     'prisma/prisma-cli',
   ]);
   const introPosts = getFeatured(blogs, [
-    'ch-nextjs-rendering-pattern',
     'ch-react-router-v6',
+    'ch-nextjs-rendering-pattern',
   ]);
 
   return {
