@@ -153,7 +153,7 @@ export default function ShortsPage({
             </div>
 
             <ul
-              className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'
+              className='mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'
               data-fade='5'
             >
               {filtered.length > 0 ? (

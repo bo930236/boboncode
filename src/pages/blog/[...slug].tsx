@@ -196,7 +196,7 @@ export default function SingleBlogPage({
                 <h2>
                   <Accent>Other posts that you might like</Accent>
                 </h2>
-                <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+                <ul className='mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'>
                   {populatedRecommendations.map((post, i) => (
                     <BlogCard
                       onClick={() => {

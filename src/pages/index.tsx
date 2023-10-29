@@ -246,7 +246,7 @@ export default function IndexPage({
                 <h2 className='text-2xl md:text-4xl' id='blog'>
                   <Accent>Featured Posts</Accent>
                 </h2>
-                <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+                <ul className='mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'>
                   {populatedPosts.map((post, i) => (
                     <BlogCard
                       key={post.slug}
@@ -282,7 +282,7 @@ export default function IndexPage({
                 <p className='mt-2 text-gray-600 dark:text-gray-300'>
                   Some projects that I'm proud of
                 </p>
-                <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+                <ul className='mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'>
                   {populatedProjects.map((project, i) => (
                     <ProjectCard
                       key={project.slug}
@@ -318,7 +318,7 @@ export default function IndexPage({
                   Short article that's not long enough to be a blog post,
                   usually comes from my personal notes.
                 </p>
-                <ul className='mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+                <ul className='mt-4 grid gap-6 sm:grid-cols-2 xl:grid-cols-3'>
                   {populatedShorts.map((short, i) => (
                     <ShortsCard
                       key={short.slug}
