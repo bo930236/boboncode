@@ -29,10 +29,10 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         className='flex h-full flex-col items-start rounded-md p-4 focus:outline-none focus-visible:ring focus-visible:ring-primary-300'
       >
         <h4>{project.title}</h4>
-        <p className='mb-auto text-sm text-gray-700 dark:text-gray-300'>
+        <p className='mb-auto mt-2 text-sm text-gray-700 dark:text-gray-300'>
           {project.description}
         </p>
-        <div className='mt-2'>
+        <div className='mt-4'>
           <TechIcons techs={project.techs.split(',') as Array<TechListType>} />
         </div>
 
@@ -41,7 +41,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
           publicId={`boboncode/${project.banner}`}
           alt={project.title}
           width={1600}
-          height={1160}
+          height={960}
           preview={false}
         />
 

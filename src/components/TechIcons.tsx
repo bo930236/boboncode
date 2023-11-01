@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { IoLogoVercel } from 'react-icons/io5';
 import {
+  SiChakraui,
+  SiExpress,
   SiFirebase,
   SiGit,
   SiGoogleanalytics,
@@ -61,6 +63,10 @@ const techList = {
     icon: SiTailwindcss,
     name: 'Tailwind CSS',
   },
+  chakraui: {
+    icon: SiChakraui,
+    name: 'Chakra UI',
+  },
   scss: {
     icon: SiSass,
     name: 'SCSS',
@@ -76,6 +82,10 @@ const techList = {
   nodejs: {
     icon: SiNodedotjs,
     name: 'Node.js',
+  },
+  express: {
+    icon: SiExpress,
+    name: 'Express',
   },
   firebase: {
     icon: SiFirebase,

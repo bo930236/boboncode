@@ -354,7 +354,7 @@ export async function getStaticProps() {
     'nextjs-rendering-pattern',
     'react-router-v6',
   ]);
-  const featuredProjects = getFeatured(projects, ['sideproject']);
+  const featuredProjects = getFeatured(projects, ['jb-camping']);
   const featuredShorts = getFeatured(shorts, [
     'mac/iterm2-ohmyzsh-configurations',
     'postgresql/postgresql-command',

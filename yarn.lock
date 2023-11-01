@@ -44,6 +44,33 @@
   dependencies:
     snake-case "^3.0.4"
 
+"@cloudinary-util/url-loader@^3.13.0":
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/url-loader/-/url-loader-3.13.0.tgz#e381b81de5901ff6ba4fde75a22052c59875236c"
+  integrity sha512-icsoivI1EXOVuAMGlO/zNGz3uBqg8/EWRT3SZOoA6nb74zD8flOXReY+i+b6hljg1Yp2y4//kkk1h4Fk70BWgA==
+  dependencies:
+    "@cloudinary-util/util" "2.2.1"
+    "@cloudinary/url-gen" "^1.10.2"
+
+"@cloudinary-util/util@2.2.1", "@cloudinary-util/util@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@cloudinary-util/util/-/util-2.2.1.tgz#c482d9321d37d921b347858a121c161b68782bd3"
+  integrity sha512-MEIqn5WtPP3mxSMTNNfpqlGS1UquAXcjmVdY/t/edD/ZWVjI85viBiOMIuF0W6n6UF5gTstLymfQNYx0YO/GZg==
+
+"@cloudinary/transformation-builder-sdk@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary/transformation-builder-sdk/-/transformation-builder-sdk-1.7.0.tgz#c69c850eb298c7eb264b486f47118cbcb709359b"
+  integrity sha512-/FLYApYLTextepNq7R3I+nMkisAVnf+ELU0+M1Zfi4vB64n4pUT7Z4jgTfmDbMhnNsGRitLHTdiRkAoVeApxZw==
+  dependencies:
+    "@cloudinary/url-gen" "^1.7.0"
+
+"@cloudinary/url-gen@^1.10.2", "@cloudinary/url-gen@^1.7.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@cloudinary/url-gen/-/url-gen-1.12.0.tgz#e7337b825bc7fb0bf3033fa8f73fac823678af00"
+  integrity sha512-L22tftVId19g8irjuHuXOdTCWC8p45ZiejtFeuqmOtwW7nkPH1vHt5MaEvDM4DiljnW0CKZJxE9RNjyxgx1/+w==
+  dependencies:
+    "@cloudinary/transformation-builder-sdk" "^1.7.0"
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -4578,6 +4605,14 @@ negotiator@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
+
+next-cloudinary@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/next-cloudinary/-/next-cloudinary-5.1.0.tgz#9b7bc6b70df71a34f1da5d7888277901fd32816a"
+  integrity sha512-VVNq2ydL8EK2gr2UmfLlQ/Ri5bc5+K4Xq6LVurffMiLl6qZ2UXqTp3rJBpaFcY4rVo40ieIBy7rY090yIZ+IVA==
+  dependencies:
+    "@cloudinary-util/url-loader" "^3.13.0"
+    "@cloudinary-util/util" "^2.2.1"
 
 next-remote-refresh@^0.10.0:
   version "0.10.0"

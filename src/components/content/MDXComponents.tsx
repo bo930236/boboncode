@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import { RoughNotation } from 'react-rough-notation';
 
 import GithubCard from '@/components/content/card/GithubCard';
@@ -10,13 +9,15 @@ import CloudinaryImg from '@/components/images/CloudinaryImg';
 import CustomLink from '@/components/links/CustomLink';
 import TechIcons from '@/components/TechIcons';
 
+import CloudinaryVideo from '../images/CloudinaryVideo';
+
 const MDXComponents = {
   a: CustomLink,
   Image,
   pre: Pre,
   // code: CustomCode,
   CloudinaryImg,
-  LiteYouTubeEmbed,
+  CloudinaryVideo,
   SplitImage,
   Split,
   TechIcons,
