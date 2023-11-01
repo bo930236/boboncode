@@ -18,9 +18,9 @@ class MyDocument extends Document {
         <Head>
           <link
             rel='preload'
-            href='/fonts/Mulish-Italic-VariableFont_wght.woff2'
+            href='/fonts/Mulish-VariableFont_wght.ttf'
             as='font'
-            type='font/woff2'
+            type='font/ttf'
             crossOrigin='anonymous'
           />
           {/* Google Analytics Measurement ID*/}
